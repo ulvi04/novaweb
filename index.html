@@ -1,14 +1,10 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NovaWeb | Premium Web Siteleri</title>
-    <link rel="icon" type="image/png" href="/novaweb/images/logo.png">
-    <link rel="icon" type="image/x-icon" href="/novaweb/images/logo.ico">
-    <script src="https://kit.fontawesome.com/e3e3021cfe.js" crossorigin="anonymous"></script>
-    <style>
-
+    <script src="https://kit.fontawesome.com/e3e3021cfe.js" crossorigin="anonymous"></script>    <style>
         /* Add this to your existing CSS */
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -673,6 +669,80 @@
                 width: 80%;
             }
         }
+
+        /* Google Translate Widget Stili */
+        .translate-widget {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            z-index: 99;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .translate-widget:hover {
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25);
+        }
+
+        .translate-widget-toggle {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            z-index: 100;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .translate-widget-toggle:hover {
+            background-color: var(--primary-dark);
+            transform: scale(1.05);
+        }
+
+        .translate-widget-toggle i {
+            font-size: 1.2rem;
+        }
+
+        .translate-widget-content {
+            display: none;
+        }
+
+        .translate-widget.active .translate-widget-content {
+            display: block;
+        }
+
+        /* Google Translate Widget Stili Geliştirmeleri */
+        .goog-te-gadget {
+            color: var(--gray) !important;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+        }
+
+        .goog-te-gadget-simple {
+            border: 1px solid var(--light-gray) !important;
+            padding: 8px 12px !important;
+            border-radius: 5px !important;
+            background-color: white !important;
+        }
+
+        .goog-te-menu-value span {
+            color: var(--gray) !important;
+        }
+
+        .goog-te-menu-value:hover span {
+            color: var(--primary) !important;
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
 </head>
@@ -683,12 +753,12 @@
             <nav class="navbar">
                 <a href="#" class="logo">Nova<span>Web</span></a>
                 <ul class="nav-menu">
-                    <li><a href="#home">Ana Sayfa</a></li>
-                    <li><a href="#about">Hakkımızda</a></li>
-                    <li><a href="#portfolio">Portfolyo</a></li>
-                    <li><a href="#services">Hizmetler</a></li>
-                    <li><a href="#testimonials">Müşteri Yorumları</a></li>
-                    <li><a href="#contact">İletişim</a></li>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#testimonials">Client Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
                 <div class="mobile-menu">
                     <span class="bar"></span>
@@ -699,31 +769,43 @@
         </div>
     </header>
 
-    <!-- Hero Bölümü -->
+    <!-- Google Translate Widget Toggle Button -->
+    <button class="translate-widget-toggle" id="translateToggle">
+        <i class="fa-solid fa-language"></i>
+    </button>
+
+    <!-- Google Translate Widget -->
+    <div class="translate-widget" id="translateWidget">
+        <div class="translate-widget-content">
+            <div id="google_translate_element"></div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content" data-aos="fade-up">
-                <h1>Premium Web Siteleri Tasarlıyoruz</h1>
-                <p>Modern, responsive ve kullanıcı dostu web siteleri ile işinizi bir üst seviyeye taşıyın. Profesyonel ekibimizle hayalinizdeki siteyi gerçeğe dönüştürüyoruz.</p>
-                <a href="#portfolio" class="btn">Çalışmalarımız</a>
-                <a href="#contact" class="btn btn-secondary">Bize Ulaşın</a>
+                <h1>We Design Premium Websites</h1>
+                <p>Take your business to the next level with modern, responsive, and user-friendly websites. Our professional team turns your dream site into reality.</p>
+                <a href="#portfolio" class="btn">Our Work</a>
+                <a href="#contact" class="btn btn-secondary">Contact Us</a>
             </div>
         </div>
     </section>
 
-    <!-- Hakkımızda -->
+    <!-- About Us -->
     <section class="about" id="about">
         <div class="container">
             <div class="section-title">
-                <h2>Biz Kimiz?</h2>
-                <p>Dijital dünyada izinizi güçlendirmek için buradayız</p>
+                <h2>Who Are We?</h2>
+                <p>We're here to strengthen your digital footprint</p>
             </div>
             <div class="team">
                 <div class="team-member" data-aos="fade-up" data-aos-delay="100">
                     <img src="/novaweb/images/people/p1.jpeg" alt="Ülvi Abbaslı">
                     <h3>Ülvi Abbaslı</h3>
-                    <p>Frontend, Backend Geliştirici & UI/UX Tasarımcı</p>
-                    <p>3 yıllık tecrübesiyle modern ve kullanıcı dostu siteler tasarlıyor.</p>
+                    <p>Frontend, Backend Developer & UI/UX Designer</p>
+                    <p>Designing modern and user-friendly websites with 3 years of experience.</p>
                     <div class="social-links">
                         <a href="https://wa.me/+994553640288" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
                         <a href="https://www.instagram.com/___ulvi___" target="_blank"><i class="fa-brands fa-instagram"></i></a>
@@ -733,8 +815,8 @@
                 <div class="team-member">
                     <img src="/novaweb/images/people/p2.jpeg" alt="Nihat Abdullazadə">
                     <h3>Nihat Abdullazadə</h3>
-                    <p>SMM Maneger & SEO Uzmanı</p>
-                    <p>Güçlü sosyal medya ve arama motoru optimizasyonu konusunda uzman.</p>
+                    <p>SMM Manager & SEO Specialist</p>
+                    <p>Expert in strong social media and search engine optimization.</p>
                     <div class="social-links">
                         <a href="https://www.instagram.com/nihat_abdullazade11" target="_blank"><i class="fa-brands fa-instagram"></i></a>
                     </div>
@@ -743,17 +825,17 @@
         </div>
     </section>
 
-    <!-- Portfolyo -->
+    <!-- Portfolio -->
     <section class="portfolio" id="portfolio">
         <div class="container">
             <div class="section-title">
-                <h2>Portfolyo</h2>
-                <p>Özenle hazırladığımız son projelerimiz</p>
+                <h2>Portfolio</h2>
+                <p>Our latest projects carefully prepared</p>
             </div>
             <div class="portfolio-filter">
-                <button class="active">Tümü</button>
-                <button>Seyahat</button>
-                <button>E-Ticaret</button>
+                <button class="active">All</button>
+                <button>Travel</button>
+                <button>E-Commerce</button>
             </div>
             <div class="portfolio-items">
                 <!-- CanaryTravel.az -->
@@ -761,8 +843,8 @@
                     <img src="/novaweb/images/weblogo/canarytravel.jpg" alt="Canary Travel">
                     <div class="portfolio-info">
                         <h3>CanaryTravel</h3>
-                        <p>Seyahat</p>
-                        <a href="https://canarytravel.az" target="_blank" style="font-weight: bold; background: linear-gradient(90deg, grey, white, lightblue); padding: 10px 15px; border-radius: 5px; text-decoration: none; color: black; display: inline-block;">Detayları Gör</a>
+                        <p>Travel</p>
+                        <a href="https://canarytravel.az" target="_blank" style="font-weight: bold; background: linear-gradient(90deg, grey, white, lightblue); padding: 10px 15px; border-radius: 5px; text-decoration: none; color: black; display: inline-block;">View Details</a>
                     </div>
                 </div>
     
@@ -771,8 +853,8 @@
                     <img src="/novaweb/images/weblogo/man.png" alt="Mandetal">
                     <div class="portfolio-info">
                         <h3>Mandetal</h3>
-                        <p>E-Ticaret</p>
-                        <a href="https://mandetal.az" target="_blank" style="font-weight: bold; background: linear-gradient(90deg, grey, white, lightblue); padding: 10px 15px; border-radius: 5px; text-decoration: none; color: black; display: inline-block;">Detayları Gör</a>
+                        <p>E-Commerce</p>
+                        <a href="https://mandetal.az" target="_blank" style="font-weight: bold; background: linear-gradient(90deg, grey, white, lightblue); padding: 10px 15px; border-radius: 5px; text-decoration: none; color: black; display: inline-block;">View Details</a>
                     </div>
                 </div>
     
@@ -781,8 +863,8 @@
                     <img src="/novaweb/images/weblogo/buta.jpeg" alt="ButaCarmats">
                     <div class="portfolio-info">
                         <h3>ButaCarmats</h3>
-                        <p>Seyahat</p>
-                        <a href="https://butacarmats.az" target="_blank" style="font-weight: bold; background: linear-gradient(90deg, grey, white, lightblue); padding: 10px 15px; border-radius: 5px; text-decoration: none; color: black; display: inline-block;">Detayları Gör</a>
+                        <p>Travel</p>
+                        <a href="https://butacarmats.az" target="_blank" style="font-weight: bold; background: linear-gradient(90deg, grey, white, lightblue); padding: 10px 15px; border-radius: 5px; text-decoration: none; color: black; display: inline-block;">View Details</a>
                     </div>
                 </div>
             </div>
@@ -791,95 +873,95 @@
     
     
 
-    <!-- Hizmetler -->
+    <!-- Services -->
     <section class="services" id="services">
         <div class="container">
             <div class="section-title">
-                <h2>Hizmetlerimiz</h2>
-                <p>İşinizi büyütmek için ihtiyacınız olan her şey</p>
+                <h2>Our Services</h2>
+                <p>Everything you need to grow your business</p>
             </div>
             <div class="services-grid">
                 <div class="service-card" data-aos="flip-left" data-aos-delay="100">
                     <div class="service-icon">⚙️</div>
-                    <h3>Web Tasarım</h3>
-                    <p>Modern, etkileyici ve kullanıcı dostu web siteleri tasarlıyoruz. Responsive tasarımlarımız tüm cihazlarda mükemmel görünüm sağlar.</p>
-                    <a href="#contact" class="btn">Teklif Al</a>
+                    <h3>Web Design</h3>
+                    <p>We design modern, impressive, and user-friendly websites. Our responsive designs provide perfect viewing on all devices.</p>
+                    <a href="#contact" class="btn">Get a Quote</a>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">🛒</div>
-                    <h3>E-Ticaret Çözümleri</h3>
-                    <p>Online satış yapabileceğiniz, kolay yönetilebilir ve güvenli e-ticaret siteleri geliştiriyoruz. Ödeme entegrasyonları ve stok yönetimi dahil.</p>
-                    <a href="#contact" class="btn">Teklif Al</a>
+                    <h3>E-Commerce Solutions</h3>
+                    <p>We develop easy-to-manage and secure e-commerce sites where you can sell online. Includes payment integrations and inventory management.</p>
+                    <a href="#contact" class="btn">Get a Quote</a>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">📱</div>
-                    <h3>Mobil Uyumluluk</h3>
-                    <p>Tüm web sitelerimiz mobil cihazlara tam uyumlu. Kullanıcılarınız nerede olursa olsun, mükemmel deneyim yaşayacaklar.</p>
-                    <a href="#contact" class="btn">Teklif Al</a>
+                    <h3>Mobile Compatibility</h3>
+                    <p>All our websites are fully compatible with mobile devices. Your users will experience perfection wherever they are.</p>
+                    <a href="#contact" class="btn">Get a Quote</a>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">🔍</div>
-                    <h3>SEO Optimizasyonu</h3>
-                    <p>Arama motorlarında üst sıralarda yer alın. SEO uyumlu kodlama ve içerik stratejileriyle ziyaretçi sayınızı artırın.</p>
-                    <a href="#contact" class="btn">Teklif Al</a>
+                    <h3>SEO Optimization</h3>
+                    <p>Rank high in search engines. Increase your visitor numbers with SEO-friendly coding and content strategies.</p>
+                    <a href="#contact" class="btn">Get a Quote</a>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">🔄</div>
-                    <h3>Bakım & Destek</h3>
-                    <p>Sitenizin her zaman güncel ve güvenli kalmasını sağlıyoruz. Teknik destek ve bakım hizmetlerimizle yanınızdayız.</p>
-                    <a href="#contact" class="btn">Teklif Al</a>
+                    <h3>Maintenance & Support</h3>
+                    <p>We ensure your site stays up-to-date and secure. We're by your side with technical support and maintenance services.</p>
+                    <a href="#contact" class="btn">Get a Quote</a>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">📊</div>
-                    <h3>Analiz & Raporlama</h3>
-                    <p>Web sitenizin performansını takip ediyoruz. Düzenli raporlarla sitenizin gelişimini ve ihtiyaçlarını öğrenin.</p>
-                    <a href="#contact" class="btn">Teklif Al</a>
+                    <h3>Analysis & Reporting</h3>
+                    <p>We track your website's performance. Learn about your site's development and needs with regular reports.</p>
+                    <a href="#contact" class="btn">Get a Quote</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Müşteri Yorumları -->
+    <!-- Client Testimonials -->
     <section class="testimonials" id="testimonials">
         <div class="container">
             <div class="section-title">
-                <h2>Müşteri Yorumları</h2>
-                <p>Müşterilerimizin bizimle çalışma deneyimleri</p>
+                <h2>Client Testimonials</h2>
+                <p>Our clients' experiences working with us</p>
             </div>
             <div class="testimonial-grid">
                 <div class="testimonial-card">
                     <div class="testimonial-content">
-                        <p>NovaWeb ekibi ile çalışmak muhteşemdi. İsteklerimizi tam olarak anladılar ve beklentilerimizin üzerinde bir site teslim ettiler. E-ticaret sitemiz sayesinde satışlarımız %40 arttı!</p>
+                        <p>Working with the NovaWeb team was amazing. They completely understood our requirements and delivered a site that exceeded our expectations. Thanks to our e-commerce site, our sales increased by 40%!</p>
                     </div>
                     <div class="testimonial-author">
                         <img src="/novaweb/images/people/p3.jpeg" alt="Ayşe Demir">
                         <div class="author-info">
                             <h4>Ayşe Demir</h4>
-                            <p>Yeşil Market, Kurucu</p>
+                            <p>Green Market, Founder</p>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-card">
                     <div class="testimonial-content">
-                        <p>Hukuk büromuz için hazırladıkları profesyonel tasarım, müvekkillerimizden büyük beğeni topladı. İş süreçleri çok net ve şeffaftı. Kesinlikle tavsiye ediyorum.</p>
+                        <p>The professional design they prepared for our law firm received great appreciation from our clients. Their work processes were very clear and transparent. I definitely recommend them.</p>
                     </div>
                     <div class="testimonial-author">
                         <img src="/novaweb/images/people/p4.jpeg" alt="Kemal Öztürk">
                         <div class="author-info">
                             <h4>Kemal Öztürk</h4>
-                            <p>Öztürk Hukuk, Avukat</p>
+                            <p>Öztürk Law, Attorney</p>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-card">
                     <div class="testimonial-content">
-                        <p>Portfolyo sitem için NovaWeb'i tercih ettim ve kesinlikle doğru bir karar verdim. Çok profesyonel bir ekip ve harika çalışıyorlar. Artık tüm işlerimi buradan alıyorum.</p>
+                        <p>I chose NovaWeb for my portfolio site and it was definitely the right decision. They're a very professional team and work wonderfully. Now I get all my work done here.</p>
                     </div>
                     <div class="testimonial-author">
                         <img src="/novaweb/images/people/p5.jpeg" alt="Ali Yıldız">
                         <div class="author-info">
                             <h4>Ali Yıldız</h4>
-                            <p>Serbest Fotoğrafçı</p>
+                            <p>Freelance Photographer</p>
                         </div>
                     </div>
                 </div>
@@ -887,20 +969,20 @@
         </div>
     </section>
 
-    <!-- İletişim -->
+    <!-- Contact -->
     <section class="contact" id="contact">
         <div class="container">
             <div class="section-title">
-                <h2>İletişim</h2>
-                <p>Projenizi gerçeğe dönüştürmek için bize ulaşın</p>
+                <h2>Contact</h2>
+                <p>Reach out to us to turn your project into reality</p>
             </div>
             <div class="contact-container">
                 <div class="contact-info">
-                    <h3>İletişim Bilgileri</h3>
+                    <h3>Contact Information</h3>
                     <div class="contact-details">
                         <div class="contact-item">
                             <div class="contact-icon">📍</div>
-                            <p>Bakı, Azərbaycan</p>
+                            <p>Baku, Azerbaijan</p>
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon">📱</div>
@@ -912,36 +994,36 @@
                         </div>
                     </div>
                     <div class="quick-contact">
-                        <h3>Hızlı İletişim</h3>
+                        <h3>Quick Contact</h3>
                         <a href="https://wa.me/994553640288" class="whatsapp-btn" target="_blank">
-                            <span class="whatsapp-icon">📱</span> WhatsApp ile Yazın
+                            <span class="whatsapp-icon">📱</span> Write via WhatsApp
                         </a>
                     </div>
                 </div>
                 <div class="contact-form">
-                    <h3>Mesaj Gönder</h3>
+                    <h3>Send Message</h3>
                     <form id="contactForm" onsubmit="sendToWhatsApp(event)">
                         <div class="form-group">
-                            <label for="name">Adınız</label>
+                            <label for="name">Your Name</label>
                             <input type="text" id="name" name="name" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="email">E-posta Adresiniz</label>
+                            <label for="email">Your Email Address</label>
                             <input type="email" id="email" name="email" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="phone">Telefon Numaranız</label>
+                            <label for="phone">Your Phone Number</label>
                             <input type="tel" id="phone" name="phone" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="subject">Konu</label>
+                            <label for="subject">Subject</label>
                             <input type="text" id="subject" name="subject" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="message">Mesajınız</label>
+                            <label for="message">Your Message</label>
                             <textarea id="message" name="message" class="form-control" required></textarea>
                         </div>
-                        <button type="submit" class="btn-submit">Mesaj Gönder</button>
+                        <button type="submit" class="btn-submit">Send Message</button>
                     </form>
                 </div>
             </div>
@@ -1069,5 +1151,41 @@
             });
         });
     </script>
+
+<!-- Google Translate Widget Script -->
+<script type="text/javascript">
+    // Only load the Google Translate script when the toggle button is clicked
+    document.addEventListener("DOMContentLoaded", function() {
+        const toggleButton = document.getElementById('translateToggle');
+        const widget = document.getElementById('translateWidget');
+        let scriptLoaded = false;
+        
+        // Toggle function for the translate widget
+        toggleButton.addEventListener('click', function() {
+            widget.classList.toggle('active');
+            
+            // Load Google Translate script on first click if not already loaded
+            if (!scriptLoaded) {
+                const translateScript = document.createElement('script');
+                translateScript.type = 'text/javascript';
+                translateScript.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+                document.head.appendChild(translateScript);
+                scriptLoaded = true;
+            }
+        });
+    });
+    
+    // Initialize Google Translate when the script loads
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+            { 
+                pageLanguage: 'en',
+                // Don't specify includedLanguages to include all available languages
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            },
+            'google_translate_element'
+        );
+    }
+</script>
 </body>
 </html>
