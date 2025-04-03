@@ -1464,7 +1464,7 @@
         </div>
     </section>
 
-    <!-- DeepSeek V3 Chatbot Widget -->
+    <!-- DeepSeek V3 Chatbot Widget 
     <div class="chatbot-widget" id="chatbotWidget">
         <div class="chatbot-header">
             <h3>NovaWeb AI Assistant</h3>
@@ -1488,7 +1488,7 @@
 
     <button class="chatbot-toggle" id="chatbotToggle">
         <i class="fas fa-comment-dots"></i>
-    </button>
+    </button> -->
 
     <!-- Footer -->
     <footer>
@@ -1645,132 +1645,7 @@
             );
         }
     </script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Chat UI elements
-        const chatbotToggle = document.getElementById('chatbotToggle');
-        const chatbotWidget = document.getElementById('chatbotWidget');
-        const chatbotClose = document.querySelector('.chatbot-close');
-        const chatbotBody = document.getElementById('chatbotBody');
-        const chatbotInput = document.getElementById('chatbotInput');
-        const chatbotSend = document.getElementById('chatbotSend');
-        
-        // Toggle chatbot visibility
-        chatbotToggle.addEventListener('click', function() {
-            chatbotWidget.classList.toggle('active');
-        });
-        
-        // Close chatbot
-        chatbotClose.addEventListener('click', function() {
-            chatbotWidget.classList.remove('active');
-        });
-        
-        // Predefined responses
-        const responses = {
-            "hello": "Hello! Welcome to NovaWeb. How can I help you today?",
-            "hi": "Hi there! Thanks for visiting NovaWeb. What would you like to know?",
-            "services": "NovaWeb offers: Web Design, E-Commerce Solutions, Mobile Compatibility, SEO Optimization, Maintenance & Support, and Analysis & Reporting.",
-            "portfolio": "You can view our portfolio at <a href='#portfolio' style='color: #2563eb;'>our portfolio section</a>.",
-            "contact": "Contact us at:<br>- Phone: +994 55 364 02 88<br>- Email: info@novaweb.com<br>- WhatsApp: <a href='https://wa.me/994553640288' style='color: #2563eb;'>Click to chat</a>",
-            "about": "NovaWeb is a professional web design company with expertise in creating modern, responsive websites. Our team includes Ülvi Abbaslı (Developer & Designer) and Nihat Abdullazadə (SMM & SEO Specialist).",
-            "default": "I'm NovaWeb's information assistant. I can tell you about our services, portfolio, team, or contact information. What would you like to know?"
-        };
-
-        // Send message function
-        function sendMessage() {
-            const message = chatbotInput.value.trim().toLowerCase();
-            if (message === '') return;
-            
-            // Add user message to chat
-            addMessage(message, 'user');
-            chatbotInput.value = '';
-            
-            // Show typing indicator
-            showTypingIndicator();
-            
-            // Simulate API delay
-            setTimeout(() => {
-                removeTypingIndicator();
-                
-                let response = responses.default;
-                
-                // Check for matching questions
-                if (message.includes('hello') || message.includes('hi')) {
-                    response = responses.hello;
-                } 
-                else if (message.includes('service') || message.includes('offer')) {
-                    response = responses.services;
-                }
-                else if (message.includes('portfolio') || message.includes('work') || message.includes('project')) {
-                    response = responses.portfolio;
-                }
-                else if (message.includes('contact') || message.includes('phone') || message.includes('email') || message.includes('whatsapp')) {
-                    response = responses.contact;
-                }
-                else if (message.includes('about') || message.includes('team') || message.includes('who')) {
-                    response = responses.about;
-                }
-                
-                addMessage(response, 'bot');
-            }, 1000);
-        }
-        
-        // Send message on button click or Enter key
-        chatbotSend.addEventListener('click', sendMessage);
-        chatbotInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                sendMessage();
-            }
-        });
-        
-        // Add message to chat
-        function addMessage(text, type) {
-            const messageDiv = document.createElement('div');
-            messageDiv.className = `chatbot-message chatbot-${type}`;
-            
-            const contentDiv = document.createElement('div');
-            contentDiv.className = 'message-content';
-            contentDiv.innerHTML = text;
-            
-            messageDiv.appendChild(contentDiv);
-            chatbotBody.appendChild(messageDiv);
-            
-            // Scroll to bottom
-            chatbotBody.scrollTop = chatbotBody.scrollHeight;
-        }
-        
-        // Show typing indicator
-        function showTypingIndicator() {
-            const typingDiv = document.createElement('div');
-            typingDiv.className = 'typing-indicator';
-            typingDiv.id = 'typingIndicator';
-            
-            const dots = document.createElement('div');
-            dots.innerHTML = '<span></span><span></span><span></span>';
-            
-            const text = document.createElement('div');
-            text.className = 'typing-text';
-            text.textContent = 'Typing...';
-            
-            typingDiv.appendChild(dots);
-            typingDiv.appendChild(text);
-            chatbotBody.appendChild(typingDiv);
-            
-            // Scroll to bottom
-            chatbotBody.scrollTop = chatbotBody.scrollHeight;
-        }
-        
-        // Remove typing indicator
-        function removeTypingIndicator() {
-            const typingIndicator = document.getElementById('typingIndicator');
-            if (typingIndicator) {
-                typingIndicator.remove();
-            }
-        }
-        
-      
-    });
-</script>
+<script src="//code.tidio.co/ofns8nwsaqoherwpewiengwofkj9q8rb.js" async></script>
     
 </body>
 </html>
