@@ -3,80 +3,234 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NovaWeb | Premium Veb Saytlar</title>
-    <script src="https://kit.fontawesome.com/e3e3021cfe.js" crossorigin="anonymous"></script>    
-    <script src="https://cdn.jsdelivr.net/npm/deepseek-ai@latest/dist/browser.js"></script>    
+    <title>NovaWeb | Premium Veb Sayt Həlləri</title>
+    <meta name="description" content="Peşəkar veb dizayn, inkişaf və rəqəmsal marketinq xidmətləri. Biznesiniz üçün unikal və effektiv həllər.">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/e3e3021cfe.js" crossorigin="anonymous"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    
+    <!-- Splide Slider -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+    
     <style>
-        /* Add this to your existing CSS */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideInFromLeft {
-            from { transform: translateX(-100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-30px); }
-            60% { transform: translateY(-15px); }
-        }
-
-        /* Ana Stiller */
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        /* ~~~~~~ Global Styles ~~~~~~ */
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
         :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary: #10b981;
-            --dark: #111827;
-            --light: #f9fafb;
-            --gray: #4b5563;
-            --light-gray: #e5e7eb;
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --primary-light: #4cc9f0;
+            --secondary: #4cc9f0;
+            --secondary-dark: #38b6db;
+            --accent: #f72585;
+            --dark: #14213d;
+            --darker: #0d1b2a;
+            --light: #f8f9fa;
+            --light-gray: #e9ecef;
+            --gray: #6c757d;
+            --dark-gray: #495057;
+            --success: #4bb543;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1), 0 4px 6px rgba(0,0,0,0.05);
+            --shadow-xl: 0 20px 25px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.04);
+            --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            --gradient-secondary: linear-gradient(135deg, var(--secondary) 0%, var(--primary-light) 100%);
+            --gradient-accent: linear-gradient(135deg, var(--accent) 0%, #b5179e 100%);
+            --border-radius-sm: 4px;
+            --border-radius-md: 8px;
+            --border-radius-lg: 12px;
+            --border-radius-xl: 16px;
+            --border-radius-circle: 50%;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--light);
             color: var(--dark);
-            line-height: 1.6;
+            line-height: 1.7;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
         }
         
-        /* Header & Navigasyon */
-        header {
-            background-color: var(--dark);
-            padding: 1rem;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        ul {
+            list-style: none;
         }
         
         .container {
+            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+        }
+        
+        .section {
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+            color: var(--dark);
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.1rem;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 30px;
+            border-radius: var(--border-radius-lg);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn-secondary {
+            background: var(--gradient-secondary);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn-accent {
+            background: var(--gradient-accent);
+            color: white;
+        }
+        
+        .btn-accent:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        /* ~~~~~~ Header & Navigation ~~~~~~ */
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(20, 33, 61, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+        
+        header.scrolled {
+            background-color: rgba(20, 33, 61, 0.98);
+            padding: 10px 0;
         }
         
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 20px 0;
+            transition: var(--transition);
         }
         
         .logo {
+            display: flex;
+            align-items: center;
             font-size: 1.8rem;
             font-weight: 700;
             color: white;
-            text-decoration: none;
-            animation: slideInFromLeft 1s ease-out;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
         }
         
         .logo span {
@@ -85,363 +239,483 @@
         
         .nav-menu {
             display: flex;
-            list-style: none;
+            align-items: center;
         }
         
         .nav-menu li {
-            margin-left: 2rem;
+            margin-left: 30px;
+            position: relative;
         }
         
         .nav-menu a {
             color: white;
-            text-decoration: none;
-            font-size: 1rem;
             font-weight: 500;
-            transition: color 0.3s;
+            font-size: 1rem;
+            position: relative;
+            padding: 5px 0;
         }
         
-        .nav-menu a:hover {
-            color: var(--secondary);
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: var(--transition);
+        }
+        
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
         }
         
         .mobile-menu {
             display: none;
             cursor: pointer;
+            z-index: 1001;
         }
         
-        .bar {
+        .mobile-menu .bar {
             display: block;
             width: 25px;
             height: 3px;
             margin: 5px auto;
             background-color: white;
+            transition: var(--transition);
         }
         
-        /* Hero Bölümü */
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        /* ~~~~~~ Hero Section ~~~~~~ */
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1920/1080') no-repeat center center/cover;
+            min-height: 800px;
             display: flex;
             align-items: center;
-            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(rgba(20, 33, 61, 0.9), rgba(20, 33, 61, 0.7)), url('https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
             color: white;
-            margin-top: 60px;
+            padding-top: 80px;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to top, var(--light), transparent);
+            z-index: 1;
         }
         
         .hero-content {
+            position: relative;
+            z-index: 2;
             max-width: 800px;
             margin: 0 auto;
+            text-align: center;
         }
         
         .hero-content h1 {
             font-size: 3.5rem;
-            margin-bottom: 1rem;
-            animation: fadeIn 1.5s ease-in-out;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
         
         .hero-content p {
             font-size: 1.2rem;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
+            color: rgba(255,255,255,0.9);
         }
         
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: var(--primary);
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 600;
-            text-transform: uppercase;
-            transition: background-color 0.3s;
-            animation: bounce 2s ease infinite;
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
         }
         
-        .btn:hover {
-            background-color: var(--primary-dark);
+        .hero-image {
+            position: absolute;
+            right: 5%;
+            bottom: 10%;
+            width: 500px;
+            animation: float 6s ease-in-out infinite;
         }
         
-        .btn-secondary {
-            background-color: var(--secondary);
-            margin-left: 1rem;
+        .hero-shape {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            overflow: hidden;
         }
         
-        .btn-secondary:hover {
-            background-color: #0da56f;
+        .hero-shape svg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            fill: rgba(255,255,255,0.03);
         }
         
-        /* Hakkımızda */
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        /* ~~~~~~ About Section ~~~~~~ */
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
         .about {
-            padding: 5rem 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-        
-        .section-title h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            background-color: white;
             position: relative;
-            display: inline-block;
+            overflow: hidden;
         }
         
-        .section-title h2::after {
+        .about::before {
             content: '';
             position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50px;
-            height: 3px;
-            background-color: var(--primary);
-        }
-        
-        .team {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-        
-        .team-member {
-            flex: 1;
-            min-width: 280px;
-            max-width: 350px;
-            text-align: center;
-            margin-bottom: 2rem;
-            transition: transform 0.3s;
-        }
-        
-        .team-member:hover {
-            transform: translateY(-10px);
-        }
-        
-        .team-member img {
+            top: 0;
+            left: 0;
             width: 100%;
-            height: auto;
-            border-radius: 10px;
-            margin-bottom: 1rem;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNDUsIDI0NSwgMjQ1LCAxKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgZmlsbD0idXJsKCNwYXR0ZXJuKSIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIvPjwvc3ZnPg==');
+            opacity: 0.1;
+            z-index: 0;
         }
         
-        .team-member h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .team-member p {
-            color: var(--gray);
-            margin-bottom: 1rem;
-        }
-        
-        .social-links {
+        .about-content {
+            position: relative;
+            z-index: 1;
             display: flex;
-            justify-content: center;
-            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 50px;
         }
         
-        .social-links a {
-            display: inline-flex;
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+        
+        .about-text h2 span {
+            color: var(--primary);
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .about-features {
+            margin-top: 30px;
+        }
+        
+        .about-feature {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .about-feature-icon {
+            flex-shrink: 0;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            border-radius: var(--border-radius-circle);
+            display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: var(--light-gray);
-            border-radius: 50%;
-            color: var(--gray);
-            text-decoration: none;
-            transition: background-color 0.3s, color 0.3s;
-        }
-        
-        .social-links a:hover {
-            background-color: var(--primary);
+            margin-right: 20px;
             color: white;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow-md);
         }
         
-      /* Portfolyo */
-        .portfolio {
-            padding: 5rem 0;
-            background-color: #f3f4f6;
+        .about-feature-content h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 50px;
         }
 
+        .about-image {
+            position: relative;
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            justify-content: center; /* Center horizontally */
+        }
+
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius-xl);
+            box-shadow: var(--shadow-xl);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Adjust the border positioning */
+        .about-image::before {
+            content: '';
+            position: absolute;
+            width: calc(100% + 40px);
+            height: calc(100% + 40px);
+            border: 5px solid var(--primary);
+            border-radius: var(--border-radius-xl);
+            top: -25px;
+            left: calc(43% - 20px); /* Adjusted to account for the border offset */
+            transform: translateX(-40%);
+            z-index: 1;
+        }
+        
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        /* ~~~~~~ Services Section ~~~~~~ */
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        .services {
+            background-color: var(--light);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .services::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(to top, white, transparent);
+            z-index: 1;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: var(--border-radius-lg);
+            padding: 40px 30px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-primary);
+            transition: var(--transition);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .service-card:hover::before {
+            height: 10px;
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px;
+            background: var(--gradient-primary);
+            border-radius: var(--border-radius-circle);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .service-card p {
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+        
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        /* ~~~~~~ Portfolio Section ~~~~~~ */
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        .portfolio {
+            background-color: white;
+            position: relative;
+        }
+        
         .portfolio-filter {
             display: flex;
             justify-content: center;
-            margin-bottom: 3rem;
             flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
         }
-
+        
         .portfolio-filter button {
+            padding: 8px 20px;
             border: none;
             background: none;
-            padding: 8px 20px;
-            margin: 5px;
+            font-weight: 600;
+            color: var(--gray);
             cursor: pointer;
-            font-weight: 500;
-            border-radius: 30px;
-            transition: all 0.3s;
+            transition: var(--transition);
+            border-radius: var(--border-radius-lg);
         }
-
+        
         .portfolio-filter button.active,
         .portfolio-filter button:hover {
-            background-color: var(--primary);
+            background: var(--gradient-primary);
             color: white;
         }
-
+        
         .portfolio-items {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
         }
-
+        
         .portfolio-item {
             position: relative;
-            border-radius: 10px;
+            border-radius: var(--border-radius-lg);
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            height: 300px; /* Başlanğıcda sabit hündürlük */
-            transition: height 0.3s ease-in-out; /* Hündürlük animasiyası */
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
         }
-
+        
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+        
         .portfolio-item img {
             width: 100%;
-            height: 100%; /* Şəkil hündürlüyünü də tənzimləyirik */
+            height: 250px;
             object-fit: cover;
-            transition: transform 0.5s;
+            transition: var(--transition);
         }
-
+        
         .portfolio-item:hover img {
-            transform: scale(1.1); /* Şəkil hover zamanı böyüyəcək */
+            transform: scale(1.05);
         }
-
+        
         .portfolio-info {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 1.5rem;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            padding: 25px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
             color: white;
             opacity: 0;
             transform: translateY(20px);
-            transition: all 0.3s;
+            transition: var(--transition);
         }
-
+        
         .portfolio-item:hover .portfolio-info {
             opacity: 1;
-            transform: translateY(0); /* Məlumatların görünməsi */
+            transform: translateY(0);
         }
-
+        
         .portfolio-info h3 {
-            margin-bottom: 0.5rem;
-        }
-
-        .portfolio-info p {
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .portfolio-info a {
-            color: var(--secondary);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        /* iframe görünür */
-        .portfolio-item iframe {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 250px;
-            border: none;
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-        }
-
-        .portfolio-item:hover iframe {
-            opacity: 1; /* Hover zamanı iframe görünür */
-        }
-
-        
-        /* Hizmetler */
-        .services {
-            padding: 5rem 0;
-        }
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-        
-        .service-card {
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-            background-color: white;
-            height: 100%;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .service-icon {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-        }
-        
-        .service-card h3 {
             font-size: 1.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 5px;
         }
         
-        .service-card p {
-            color: var(--gray);
-            margin-bottom: 1.5rem;
+        .portfolio-info p {
+            margin-bottom: 15px;
+            color: rgba(255,255,255,0.8);
         }
         
-        /* Müşteri Yorumları */
+        .portfolio-info a {
+            display: inline-flex;
+            align-items: center;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .portfolio-info a i {
+            margin-left: 5px;
+            transition: var(--transition);
+        }
+        
+        .portfolio-info a:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        /* ~~~~~~ Testimonials Section ~~~~~~ */
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
         .testimonials {
-            padding: 5rem 0;
-            background-color: #f3f4f6;
+            background-color: var(--light);
+            position: relative;
         }
         
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
+        .testimonial-slider {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
         }
         
         .testimonial-card {
             background-color: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: var(--border-radius-lg);
+            padding: 40px;
+            margin: 0 15px;
+            box-shadow: var(--shadow-md);
             position: relative;
         }
         
         .testimonial-card::before {
             content: '"';
             position: absolute;
-            top: 10px;
+            top: 20px;
             left: 20px;
             font-size: 5rem;
-            color: var(--light-gray);
             font-family: Georgia, serif;
+            color: rgba(67, 97, 238, 0.1);
             line-height: 1;
-            opacity: 0.5;
         }
         
         .testimonial-content {
-            margin-bottom: 1.5rem;
             position: relative;
             z-index: 1;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--dark-gray);
         }
         
         .testimonial-author {
@@ -452,30 +726,51 @@
         .testimonial-author img {
             width: 60px;
             height: 60px;
-            border-radius: 50%;
+            border-radius: var(--border-radius-circle);
             object-fit: cover;
-            margin-right: 1rem;
+            margin-right: 15px;
+            border: 3px solid var(--primary);
         }
-
         
         .author-info h4 {
-            margin-bottom: 0.25rem;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--dark);
         }
         
         .author-info p {
             color: var(--gray);
+            margin-bottom: 0;
             font-size: 0.9rem;
         }
         
-        /* İletişim */
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        /* ~~~~~~ Contact Section ~~~~~~ */
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
         .contact {
-            padding: 5rem 0;
+            background-color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNDUsIDI0NSwgMjQ1LCAxKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgZmlsbD0idXJsKCNwYXR0ZXJuKSIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIvPjwvc3ZnPg==');
+            opacity: 0.1;
+            z-index: 0;
         }
         
         .contact-container {
+            position: relative;
+            z-index: 1;
             display: flex;
             flex-wrap: wrap;
-            gap: 3rem;
+            gap: 50px;
         }
         
         .contact-info {
@@ -484,82 +779,150 @@
         }
         
         .contact-info h3 {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+        
+        .contact-info p {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
         }
         
         .contact-details {
-            margin-bottom: 2rem;
+            margin-bottom: 30px;
         }
         
         .contact-item {
             display: flex;
-            margin-bottom: 1rem;
+            align-items: flex-start;
+            margin-bottom: 20px;
         }
         
         .contact-icon {
-            margin-right: 1rem;
-            color: var(--primary);
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            border-radius: var(--border-radius-circle);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: white;
             font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .contact-text h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .contact-text a {
+            color: var(--gray);
+            transition: var(--transition);
+        }
+        
+        .contact-text a:hover {
+            color: var(--primary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            border-radius: var(--border-radius-circle);
+            background-color: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background: var(--gradient-primary);
+            color: white;
+            transform: translateY(-3px);
         }
         
         .contact-form {
             flex: 1;
             min-width: 300px;
+            background-color: white;
+            border-radius: var(--border-radius-lg);
+            padding: 40px;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .contact-form h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
         }
         
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 20px;
         }
         
         .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 8px;
             font-weight: 500;
+            color: var(--dark);
         }
         
         .form-control {
             width: 100%;
-            padding: 12px;
+            padding: 12px 15px;
             border: 1px solid var(--light-gray);
-            border-radius: 5px;
+            border-radius: var(--border-radius-md);
             font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
         }
         
         textarea.form-control {
-            resize: vertical;
             min-height: 150px;
+            resize: vertical;
         }
         
-        .btn-submit {
-            background-color: var(--primary);
+        .form-success-message {
+            background-color: var(--success);
             color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 600;
-            text-transform: uppercase;
-            transition: background-color 0.3s;
+            padding: 15px;
+            border-radius: var(--border-radius-md);
+            margin-bottom: 20px;
+            display: none;
         }
         
-        .btn-submit:hover {
-            background-color: var(--primary-dark);
-        }
-        
-        /* Footer */
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        /* ~~~~~~ Footer ~~~~~~ */
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
         footer {
-            background-color: var(--dark);
+            background-color: var(--darker);
             color: white;
-            padding: 3rem 0 1.5rem;
+            padding: 80px 0 0;
+            position: relative;
         }
         
         .footer-content {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 2rem;
-            margin-bottom: 3rem;
+            gap: 50px;
+            margin-bottom: 60px;
         }
         
         .footer-column {
@@ -568,98 +931,255 @@
         }
         
         .footer-column h3 {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             margin-bottom: 1.5rem;
             position: relative;
+            padding-bottom: 15px;
         }
         
         .footer-column h3::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: 0;
             left: 0;
-            width: 40px;
+            width: 50px;
             height: 3px;
-            background-color: var(--secondary);
+            background: var(--gradient-primary);
+            border-radius: 2px;
         }
         
-        .footer-links {
-            list-style: none;
+        .footer-about p {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 20px;
         }
         
         .footer-links li {
-            margin-bottom: 0.75rem;
+            margin-bottom: 12px;
         }
         
         .footer-links a {
-            color: #d1d5db;
-            text-decoration: none;
-            transition: color 0.3s;
+            color: rgba(255,255,255,0.7);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-links a i {
+            margin-right: 10px;
+            font-size: 0.8rem;
+            color: var(--primary);
         }
         
         .footer-links a:hover {
-            color: var(--secondary);
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .footer-contact-info {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .footer-contact-info i {
+            margin-right: 10px;
+            color: var(--primary);
         }
         
         .footer-bottom {
             text-align: center;
-            padding-top: 1.5rem;
-            border-top: 1px solid #374151;
+            padding: 20px 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
         }
         
-        /* Responsive */
-        @media (max-width: 900px) {
+        .footer-bottom p {
+            margin-bottom: 0;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+        }
+        
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        /* ~~~~~~ Animations ~~~~~~ */
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideInLeft {
+            from { transform: translateX(-100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes slideInRight {
+            from { transform: translateX(100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes slideInUp {
+            from { transform: translateY(100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
+        }
+        
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        /* ~~~~~~ Responsive Styles ~~~~~~ */
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        @media (max-width: 992px) {
+            .section {
+                padding: 80px 0;
+            }
+            
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+            
+            .about-image::before {
+                top: -15px;
+                left: -15px;
+            }
+            .about-content {
+                flex-direction: row; /* Ensure side-by-side layout */
+            }
+            
+            .about-image::before {
+                left: calc(50% - 15px);
+                width: calc(100% + 30px);
+                height: calc(100% + 30px);
+                top: -15px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
             .nav-menu {
                 position: fixed;
-                left: -100%;
-                top: 60px;
-                flex-direction: column;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
                 background-color: var(--dark);
-                width: 100%;
-                text-align: center;
-                transition: 0.3s;
-                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-                padding: 2rem 0;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: var(--transition);
+                z-index: 1000;
             }
             
             .nav-menu.active {
-                left: 0;
+                right: 0;
             }
             
             .nav-menu li {
-                margin: 1.5rem 0;
+                margin: 15px 0;
             }
             
             .mobile-menu {
                 display: block;
             }
             
+            .mobile-menu.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            
+            .mobile-menu.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .mobile-menu.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+            
             .hero-content h1 {
                 font-size: 2.5rem;
             }
             
-            .btn {
-                display: block;
-                width: 80%;
-                margin: 0 auto 1rem;
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
             }
             
-            .btn-secondary {
-                margin-left: auto;
+            .portfolio-items {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             }
             
-            .testimonial-grid {
-                grid-template-columns: 1fr;
+            .contact-container {
+                flex-direction: column;
+            }
+
+            .hero-image {
+                width: 350px; /* Reduce size on tablets */
+                right: 0;
+                bottom: 5%;
+            }
+            
+            .hero-image img.img-fluid {
+                max-width: 100%; /* Ensure image scales properly */
+            }
+
+            .back-to-top {
+                right: 20px; /* Adjust for mobile */
+                bottom: 80px; /* Position above WhatsApp button */
+            }
+
+            .about-image::before {
+                left: calc(40% - 5px);
+                width: calc(98% + 15px);
+                height: calc(100% + 20px);
+                top: -10px;
+                right: 10px;
             }
         }
         
-        @media (max-width: 600px) {
+        @media (max-width: 576px) {
+            .section {
+                padding: 50px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
             .hero-content h1 {
                 font-size: 2rem;
             }
             
-            .section-title h2 {
-                font-size: 2rem;
+            .hero-content p {
+                font-size: 1rem;
             }
             
             .portfolio-filter {
@@ -668,532 +1188,285 @@
             }
             
             .portfolio-filter button {
-                width: 80%;
+                width: 100%;
+            }
+            
+            .portfolio-items {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-form {
+                padding: 30px 20px;
+            }
+
+            .back-to-top {
+                right: 15px;
+                bottom: 70px;
+            }
+
+            .hero-image {
+                width: 280px; /* Further reduce size on phones */
+                bottom: 2%;
             }
         }
-
-        /* Google Translate Widget Stili */
-        .translate-widget {
-            position: fixed;
-            top: 80px;
-            right: 20px;
-            z-index: 99;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            padding: 10px;
-            transition: all 0.3s ease;
+        
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        /* ~~~~~~ Utility Classes ~~~~~~ */
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        .text-primary {
+            color: var(--primary);
         }
-
-        .translate-widget:hover {
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25);
+        
+        .text-secondary {
+            color: var(--secondary);
         }
-
-        .translate-widget-toggle {
-            position: fixed;
-            top: 80px;
-            right: 20px;
-            z-index: 100;
+        
+        .text-accent {
+            color: var(--accent);
+        }
+        
+        .bg-primary {
             background-color: var(--primary);
+        }
+        
+        .bg-secondary {
+            background-color: var(--secondary);
+        }
+        
+        .bg-accent {
+            background-color: var(--accent);
+        }
+        
+        .bg-light {
+            background-color: var(--light);
+        }
+        
+        .bg-dark {
+            background-color: var(--dark);
+        }
+        
+        .mt-1 { margin-top: 10px; }
+        .mt-2 { margin-top: 20px; }
+        .mt-3 { margin-top: 30px; }
+        .mt-4 { margin-top: 40px; }
+        .mt-5 { margin-top: 50px; }
+        
+        .mb-1 { margin-bottom: 10px; }
+        .mb-2 { margin-bottom: 20px; }
+        .mb-3 { margin-bottom: 30px; }
+        .mb-4 { margin-bottom: 40px; }
+        .mb-5 { margin-bottom: 50px; }
+        
+        .pt-1 { padding-top: 10px; }
+        .pt-2 { padding-top: 20px; }
+        .pt-3 { padding-top: 30px; }
+        .pt-4 { padding-top: 40px; }
+        .pt-5 { padding-top: 50px; }
+        
+        .pb-1 { padding-bottom: 10px; }
+        .pb-2 { padding-bottom: 20px; }
+        .pb-3 { padding-bottom: 30px; }
+        .pb-4 { padding-bottom: 40px; }
+        .pb-5 { padding-bottom: 50px; }
+        
+        .text-center { text-align: center; }
+        .text-left { text-align: left; }
+        .text-right { text-align: right; }
+        
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        /* ~~~~~~ Custom Components ~~~~~~ */
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px; /* Changed from left to right */
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-accent); /* Changed from primary to accent */
             color: white;
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
+            border-radius: var(--border-radius-circle);
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .translate-widget-toggle:hover {
-            background-color: var(--primary-dark);
-            transform: scale(1.05);
-        }
-
-        .translate-widget-toggle i {
             font-size: 1.2rem;
+            box-shadow: var(--shadow-lg);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
         }
 
-        .translate-widget-content {
-            display: none;
-        }
-
-        .translate-widget.active .translate-widget-content {
-            display: block;
-        }
-
-        /* Google Translate Widget Stili Geliştirmeleri */
-        .goog-te-gadget {
-            color: var(--gray) !important;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
-        }
-
-        .goog-te-gadget-simple {
-            border: 1px solid var(--light-gray) !important;
-            padding: 8px 12px !important;
-            border-radius: 5px !important;
-            background-color: white !important;
-        }
-
-        .goog-te-menu-value span {
-            color: var(--gray) !important;
-        }
-
-        .goog-te-menu-value:hover span {
-            color: var(--primary) !important;
-        }
-
-        /*Whatsapp*/
-
-        .quick-contact {
-            margin-top: 2rem;
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
         }
         
+        .back-to-top:hover {
+            transform: translateY(-5px);
+        }
+        
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+        
+        .preloader.fade-out {
+            opacity: 0;
+        }
+        
+        .preloader-content {
+            text-align: center;
+        }
+        
+        .preloader-logo {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 20px;
+            animation: pulse 1.5s infinite;
+        }
+        
+        .preloader-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255,255,255,0.1);
+            border-radius: var(--border-radius-circle);
+            border-top-color: var(--primary);
+            margin: 0 auto;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        /* ~~~~~~ Google Translate Widget ~~~~~~ */
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        /* Add these styles to your CSS */
+
+        .translate-menu-item {
+            margin-left: 30px;
+            display: flex;
+            align-items: center;
+        }
+
+        .goog-te-combo {
+            padding: 5px 10px;
+            border-radius: var(--border-radius-md);
+            border: 1px solid rgba(255,255,255,0.2);
+            background-color: rgba(255,255,255,0.1);
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+        }
+
+        .mobile-translate {
+            padding: 15px;
+            margin-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .mobile-translate .goog-te-combo {
+            width: 100%;
+            padding: 10px;
+            background-color: rgba(255,255,255,0.1);
+            color: white;
+        }
+
+        /* Hide Google branding */
+        .goog-logo-link, .goog-te-gadget {
+            display: none !important;
+        }
+
+        .goog-te-gadget .goog-te-combo {
+            margin: 0 !important;
+        }
+                        
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        /* ~~~~~~ WhatsApp Button ~~~~~~ */
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
         .whatsapp-btn {
-            display: inline-flex;
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 999;
+            display: flex;
             align-items: center;
             background-color: #25D366;
             color: white;
-            text-decoration: none;
             padding: 12px 20px;
-            border-radius: 30px;
+            border-radius: var(--border-radius-lg);
             font-weight: 600;
-            transition: background-color 0.3s;
-            margin-top: 1rem;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+        }
+        
+        .whatsapp-btn i {
+            margin-right: 10px;
+            font-size: 1.5rem;
         }
         
         .whatsapp-btn:hover {
             background-color: #128C7E;
+            transform: translateY(-5px);
         }
         
-        .whatsapp-icon {
-            margin-right: 10px;
-            font-size: 1.2rem;
-        }
-        
-        .form-success-message {
-            background-color: #4BB543;
-            color: white;
-            padding: 1rem;
-            border-radius: 5px;
-            margin-bottom: 1rem;
-            display: none;
-        }
-
-        /* Chatbot Styles - Enhanced for DeepSeek V3 */
-        .chatbot-toggle {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            z-index: 999;
-            transition: all 0.3s ease;
-        }
-
-        .chatbot-toggle:hover {
-            background-color: var(--primary-dark);
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
-        }
-
-        .chatbot-widget {
-            position: fixed;
-            bottom: 100px;
-            right: 30px;
-            width: 380px;
-            max-height: 65vh;
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-            display: flex;
-            flex-direction: column;
-            z-index: 999;
-            transform: translateY(20px);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            overflow: hidden;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .chatbot-widget.active {
-            transform: translateY(0);
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .chatbot-header {
-            padding: 16px 20px;
-            background: linear-gradient(135deg, var(--dark), #1a365d);
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-        }
-
-        .chatbot-header h3 {
-            margin: 0;
-            font-size: 1.2rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .chatbot-header h3::before {
-            content: "";
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            background-color: var(--secondary);
-            border-radius: 50%;
-            animation: pulse 1.5s infinite;
-        }
-
-        .chatbot-close {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.8rem;
-            cursor: pointer;
-            line-height: 1;
-            padding: 5px;
-            opacity: 0.8;
-            transition: opacity 0.2s;
-        }
-
-        .chatbot-close:hover {
-            opacity: 1;
-        }
-
-        .chatbot-body {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-            background-color: #f9fafb;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            scrollbar-width: thin;
-            scrollbar-color: var(--light-gray) transparent;
-        }
-
-        .chatbot-body::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .chatbot-body::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        .chatbot-body::-webkit-scrollbar-thumb {
-            background-color: var(--light-gray);
-            border-radius: 3px;
-        }
-
-        .chatbot-message {
-            max-width: 85%;
-            padding: 12px 16px;
-            border-radius: 18px;
-            font-size: 0.95rem;
-            line-height: 1.5;
-            word-wrap: break-word;
-            animation: messageAppear 0.3s ease-out;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-        }
-
-        .chatbot-user {
-            align-self: flex-end;
-            background: linear-gradient(135deg, var(--primary), #3b82f6);
-            color: white;
-            border-bottom-right-radius: 4px;
-            margin-left: 15%;
-        }
-
-        .chatbot-bot {
-            align-self: flex-start;
-            background-color: white;
-            color: var(--dark);
-            border: 1px solid var(--light-gray);
-            border-bottom-left-radius: 4px;
-            margin-right: 15%;
-        }
-
-        .chatbot-team {
-            align-self: flex-start;
-            background: linear-gradient(135deg, var(--secondary), #10a371);
-            color: white;
-            border-bottom-left-radius: 4px;
-            margin-right: 15%;
-        }
-
-        .message-content {
-            position: relative;
-        }
-
-        .message-content a {
-            color: var(--primary);
-            text-decoration: underline;
-            word-break: break-all;
-        }
-
-        .message-content pre {
-            background-color: rgba(0, 0, 0, 0.05);
-            padding: 10px;
-            border-radius: 6px;
-            overflow-x: auto;
-            font-size: 0.85rem;
-            margin: 8px 0;
-        }
-
-        .message-content code {
-            font-family: 'Courier New', Courier, monospace;
-            background-color: rgba(0, 0, 0, 0.05);
-            padding: 2px 4px;
-            border-radius: 3px;
-            font-size: 0.9rem;
-        }
-
-        .chatbot-input {
-            display: flex;
-            padding: 12px;
-            border-top: 1px solid var(--light-gray);
-            background-color: white;
-            align-items: center;
-        }
-
-        .chatbot-input input {
-            flex: 1;
-            padding: 12px 18px;
-            border: 1px solid var(--light-gray);
-            border-radius: 30px;
-            outline: none;
-            font-size: 0.95rem;
-            transition: border-color 0.3s, box-shadow 0.3s;
-        }
-
-        .chatbot-input input:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-        }
-
-        .chatbot-input button {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            border: none;
-            background: linear-gradient(135deg, var(--primary), #3b82f6);
-            color: white;
-            margin-left: 10px;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .chatbot-input button:hover {
-            background: linear-gradient(135deg, var(--primary-dark), #2563eb);
-            transform: scale(1.05);
-        }
-
-        .chatbot-input button:disabled {
-            background: var(--light-gray);
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .chatbot-footer {
-            padding: 10px 15px;
-            font-size: 0.7rem;
-            color: var(--gray);
-            text-align: center;
-            background-color: white;
-            border-top: 1px solid var(--light-gray);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-        }
-
-        .chatbot-footer small {
-            opacity: 0.8;
-        }
-
-        /* Typing indicator */
-        .typing-indicator {
-            display: flex;
-            padding: 12px 16px;
-            background-color: white;
-            border: 1px solid var(--light-gray);
-            border-radius: 18px;
-            align-self: flex-start;
-            margin-bottom: 10px;
-            gap: 6px;
-            align-items: center;
-        }
-
-        .typing-indicator span {
-            height: 8px;
-            width: 8px;
-            background-color: var(--gray);
-            border-radius: 50%;
-            display: inline-block;
-            animation: typingAnimation 1.4s infinite ease-in-out;
-        }
-
-        .typing-indicator span:nth-child(1) {
-            animation-delay: 0s;
-        }
-
-        .typing-indicator span:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .typing-indicator span:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-
-        .typing-text {
-            font-size: 0.85rem;
-            color: var(--gray);
-            margin-left: 8px;
-        }
-
-        /* Animations */
-        @keyframes typingAnimation {
-            0%, 60%, 100% { transform: translateY(0); opacity: 0.6; }
-            30% { transform: translateY(-5px); opacity: 1; }
-        }
-
-        @keyframes messageAppear {
-            from { opacity: 0; transform: translateY(5px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes pulse {
-            0% { opacity: 0.6; }
-            50% { opacity: 1; }
-            100% { opacity: 0.6; }
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 480px) {
-            .chatbot-widget {
-                width: 90vw;
-                right: 5vw;
-                max-height: 60vh;
-                bottom: 80px;
-            }
-            
-            .chatbot-toggle {
-                width: 50px;
-                height: 50px;
-                font-size: 1.3rem;
-                bottom: 20px;
-                right: 20px;
-            }
-            
-            .chatbot-message {
-                max-width: 80%;
-                font-size: 0.9rem;
-                padding: 10px 14px;
-            }
-            
-            .chatbot-body {
-                padding: 15px;
-            }
-        }
-
-        /* Dark mode support */
-        @media (prefers-color-scheme: dark) {
-            .chatbot-widget {
-                background-color: #1e293b;
-                border-color: #334155;
-            }
-            
-            .chatbot-body {
-                background-color: #0f172a;
-            }
-            
-            .chatbot-bot {
-                background-color: #334155;
-                color: #f8fafc;
-                border-color: #475569;
-            }
-            
-            .chatbot-input {
-                background-color: #1e293b;
-                border-color: #334155;
-            }
-            
-            .chatbot-input input {
-                background-color: #334155;
-                border-color: #475569;
-                color: #f8fafc;
-            }
-            
-            .chatbot-footer {
-                background-color: #1e293b;
-                border-color: #334155;
-                color: #94a3b8;
-            }
-            
-            .typing-indicator {
-                background-color: #334155;
-                border-color: #475569;
-            }
-            
-            .typing-indicator span {
-                background-color: #94a3b8;
-            }
-            
-            .message-content a {
-                color: #7dd3fc;
-            }
-            
-            .message-content pre {
-                background-color: #334155;
-                color: #f8fafc;
-            }
-            
-            .message-content code {
-                background-color: #334155;
-                color: #f8fafc;
-            }
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        /* ~~~~~~ Particle Background ~~~~~~ */
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        .particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
         }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
 </head>
 <body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-content">
+            <div class="preloader-logo">
+                <img src="logo.png" alt="NovaWeb Logo" style="height: 100px; border-radius: 50%;">
+            </div>
+            <div class="preloader-spinner"></div>
+        </div>
+    </div>
+
     <!-- Header -->
-    <header>
+    <header id="header">
         <div class="container">
             <nav class="navbar">
-                <a href="#" class="logo">Nova<span>Web</span></a>
+                <a href="#" class="logo">
+                    <img src="logo.png" alt="NovaWeb Logo" style="height: 40px; border-radius: 50%;">
+                    <span style="color: #4cc9f0; font-weight: 700;">Nova</span>
+                    <span style="color: #4361ee; font-weight: 700;">Web</span>                
+                </a>
+                
                 <ul class="nav-menu">
-                    <li><a href="#home">Əsas Səhifə</a></li>
+                    <li><a href="#home" class="active">Əsas Səhifə</a></li>
                     <li><a href="#about">Haqqımızda</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
                     <li><a href="#services">Xidmətlər</a></li>
-                    <li><a href="#testimonials">Müştəri Rəyləri</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#testimonials">Rəylər</a></li>
                     <li><a href="#contact">Əlaqə</a></li>
+                    <li class="translate-menu-item">
+                        <div id="google_translate_element"></div>
+                    </li>
                 </ul>
+                
                 <div class="mobile-menu">
                     <span class="bar"></span>
                     <span class="bar"></span>
@@ -1203,261 +1476,348 @@
         </div>
     </header>
 
-    <!-- Google Translate Widget Toggle Button -->
-    <button class="translate-widget-toggle" id="translateToggle">
-        <i class="fa-solid fa-language"></i>
-    </button>
-
-    <!-- Google Translate Widget -->
-    <div class="translate-widget" id="translateWidget">
-        <div class="translate-widget-content">
-            <div id="google_translate_element"></div>
-        </div>
-    </div>
-
     <!-- Hero Section -->
     <section class="hero" id="home">
+        <div class="hero-shape">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="#4361ee" fill-opacity="0.1" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+        </div>
+        
         <div class="container">
             <div class="hero-content" data-aos="fade-up">
-                <h1>Peşəkar Veb Saytlar Hazırlayırıq</h1>
-                <p>Biznesinizi yeni səviyyəyə qaldırın. Müasir, uyğun və istifadəçi dostu veb saytlar hazırlayırıq. Peşəkar komandamız sizin arzunuz olan saytı reallığa çevirir.</p>
-                <a href="#portfolio" class="btn">İşlərimiz</a>
-                <a href="#contact" class="btn btn-secondary">Əlaqə</a>
+                <h1>Biznesiniz üçün <span class="text-primary">unikal</span> veb həllər</h1>
+                <p>Peşəkar komandamız sizin üçün ən son texnologiyalardan istifadə edərək effektiv və gözəl veb saytlar hazırlayır. Rəqəmsal dünyada fərqlənin!</p>
+                
+                <div class="hero-buttons">
+                    <a href="#portfolio" class="btn btn-primary">
+                        <i class="fas fa-eye mr-2"></i> İşlərimizə Baxın
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-paper-plane mr-2"></i> Əlaqə Saxlayın
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="hero-image" data-aos="fade-left" data-aos-delay="300">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Web Development" class="img-fluid">
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Biz <span>Kimik?</span></h2>
+                <p>NovaWeb - rəqəmsal dünyada uğurunuz üçün yaratdığımız innovativ həllər</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text" data-aos="fade-right">
+                    <h2>Biz <span class="text-primary">NovaWeb</span> komandasıyıq</h2>
+                    <p>10 ildən çox təcrübəyə malik peşəkarlardan ibarət komandayıq. Hər bir işimizə sevgi və peşəkarlıqla yanaşırıq.</p>
+                    <p>Biznesinizin ehtiyaclarını anlamaq və onlara uyğun ən yaxşı həlli təqdim etmək bizim üçün ən vacib prioritetdir.</p>
+                    
+                    <div class="about-features">
+                        <div class="about-feature" data-aos="fade-right" data-aos-delay="100">
+                            <div class="about-feature-icon">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                            <div class="about-feature-content">
+                                <h4>Keyfiyyətə Zəmanət</h4>
+                                <p>Bütün işlərimizə ömürlük dəstək və zəmanət veririk.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="about-feature" data-aos="fade-right" data-aos-delay="200">
+                            <div class="about-feature-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <div class="about-feature-content">
+                                <h4>Sürətli Performans</h4>
+                                <p>Optimallaşdırılmış kodlar ilə yüksək sürətli saytlar hazırlayırıq.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="about-feature" data-aos="fade-right" data-aos-delay="300">
+                            <div class="about-feature-icon">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <div class="about-feature-content">
+                                <h4>24/7 Dəstək</h4>
+                                <p>Hər zaman sizin üçün hazırıq. Problemlərinizi dərhal həll edirik.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-image" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="NovaWeb Team">
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- About Us -->
-    <section class="about" id="about">
+    <!-- Services Section -->
+    <section class="section services" id="services">
         <div class="container">
-            <div class="section-title">
-                <h2>Biz Kimik?</h2>
-                <p>Rəqəmsal izinizi gücləndirmək üçün buradayıq</p>
+            <div class="section-title" data-aos="fade-up">
+                <h2>Xidmətlərimiz</h2>
+                <p>Biznesinizin rəqəmsal transformasiyası üçün geniş çeşidli xidmətlər təqdim edirik</p>
             </div>
-            <div class="team">
-                <div class="team-member" data-aos="fade-up" data-aos-delay="100">
-                    <img src="/novaweb/images/people/p1.jpeg" alt="Ülvi Abbaslı">
-                    <h3>Ülvi Abbaslı</h3>
-                    <p>Frontend, Backend Developer & UI/UX Designer</p>
-                    <p>3 illik təcrübə ilə müasir və istifadəçi dostu veb saytlar hazırlayıram.</p>
-                    <div class="social-links">
-                        <a href="https://wa.me/+994553640288" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
-                        <a href="https://www.instagram.com/___ulvi___" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="https://www.linkedin.com/in/%C3%BClvi-abbasl%C4%B1-59b4682a8/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+            
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
                     </div>
+                    <h3>Veb Dizayn</h3>
+                    <p>Müasir, istifadəçi dostu və unikal dizaynlar hazırlayırıq. Hər bir dizayn biznesinizin xüsusiyyətlərini əks etdirir.</p>
+                    <a href="#contact" class="btn btn-primary">Sifariş et</a>
                 </div>
-                <div class="team-member">
-                    <img src="/novaweb/images/people/p2.jpeg" alt="Nihat Abdullazadə">
-                    <h3>Nihat Abdullazadə</h3>
-                    <p>SMM Meneceri & SEO Mütəxəssisi</p>
-                    <p>Güclü sosial media və axtarış sistemlərinə optimallaşdırma sahəsində mütəxəssis.</p>
-                    <div class="social-links">
-                        <a href="https://www.instagram.com/nihat_abdullazade11" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon">
+                        <i class="fas fa-shopping-cart"></i>
                     </div>
+                    <h3>Elektron Ticarət</h3>
+                    <p>Onlayn mağazalar hazırlayaraq internetdən satış etməyiniz üçün ən yaxşı həlləri təqdim edirik.</p>
+                    <a href="#contact" class="btn btn-primary">Sifariş et</a>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobil Tətbiqlər</h3>
+                    <p>iOS və Android platformaları üçün yüksək performanslı mobil tətbiqlər hazırlayırıq.</p>
+                    <a href="#contact" class="btn btn-primary">Sifariş et</a>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>SEO Optimallaşdırma</h3>
+                    <p>Axtarış sistemlərində yüksək pozisiyalar əldə etmək üçün saytınızı peşəkarlıqla optimallaşdırırıq.</p>
+                    <a href="#contact" class="btn btn-primary">Sifariş et</a>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Rəqəmsal Marketinq</h3>
+                    <p>Sosial media, Google Ads və digər kanallar vasitəsilə biznesinizin tanıtımını həyata keçiririk.</p>
+                    <a href="#contact" class="btn btn-primary">Sifariş et</a>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3>Hosting & Dəstək</h3>
+                    <p>Yüksək sürətli hosting xidmətləri və texniki dəstək təqdim edirik.</p>
+                    <a href="#contact" class="btn btn-primary">Sifariş et</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio -->
-    <section class="portfolio" id="portfolio">
+    <!-- Portfolio Section -->
+    <section class="section portfolio" id="portfolio">
         <div class="container">
-            <div class="section-title">
-                <h2>Portfolio</h2>
-                <p>Diqqətlə hazırlanmış son işlərimiz</p>
+            <div class="portfolio-filter" data-aos="fade-up">
+                <button class="active" data-filter="*">Hamısı</button>
+                <button data-filter=".ecommerce">Elektron Ticarət</button>
+                <button data-filter=".travel">Səyahət</button>
             </div>
-            <div class="portfolio-filter">
-                <button class="active">Hamısı</button>
-                <button>Səyahət</button>
-                <button>Elektron Ticarət</button>
-            </div>
+            
             <div class="portfolio-items">
-                <!-- CanaryTravel.az -->
-                <div class="portfolio-item">
-                    <img src="/novaweb/images/weblogo/canarytravel.jpg" alt="Canary Travel">
-                    <div class="portfolio-info">
-                        <h3>CanaryTravel</h3>
-                        <p>Səyahət</p>
-                        <a href="https://canarytravel.az" target="_blank" style="font-weight: bold; background: linear-gradient(90deg, grey, white, lightblue); padding: 10px 15px; border-radius: 5px; text-decoration: none; color: black; display: inline-block;">Ətraflı</a>
-                    </div>
-                </div>
-    
-                <!-- Mandetal.az -->
-                <div class="portfolio-item" data-aos="zoom-in" data-aos-delay="200">
-                    <img src="/novaweb/images/weblogo/man.png" alt="Mandetal">
+                <!-- E-commerce Items -->
+                <div class="portfolio-item ecommerce" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="E-commerce Project">
                     <div class="portfolio-info">
                         <h3>Mandetal</h3>
-                        <p>Elektron Ticarət</p>
-                        <a href="https://mandetal.az" target="_blank" style="font-weight: bold; background: linear-gradient(90deg, grey, white, lightblue); padding: 10px 15px; border-radius: 5px; text-decoration: none; color: black; display: inline-block;">Ətraflı</a>
+                        <p>Onlayn tır detalları mağazası</p>
+                        <a href="https://mandetal.az" target="_blank">Ətraflı <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
-    
-                <!-- Butacarmats.az -->
-                <div class="portfolio-item" data-aos="zoom-in" data-aos-delay="300">
-                    <img src="/novaweb/images/weblogo/buta.jpeg" alt="ButaCarmats">
+                
+                <div class="portfolio-item ecommerce" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="E-commerce Project">
                     <div class="portfolio-info">
-                        <h3>ButaCarmats</h3>
-                        <p>Səyahət</p>
-                        <a href="https://butacarmats.az" target="_blank" style="font-weight: bold; background: linear-gradient(90deg, grey, white, lightblue); padding: 10px 15px; border-radius: 5px; text-decoration: none; color: black; display: inline-block;">Ətraflı</a>
+                        <h3>Butacarmats</h3>
+                        <p>Maşın xalçaları üçün onlayn platforma</p>
+                        <a href="https://butacarmats.az">Ətraflı <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Travel Item -->
+                <div class="portfolio-item travel" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Travel Project">
+                    <div class="portfolio-info">
+                        <h3>CanaryTravel</h3>
+                        <p>Səyahət agentliyi üçün veb sayt</p>
+                        <a href="https://canarytravel.az" target="_blank">Ətraflı <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    
-    
-
-    <!-- Services -->
-    <section class="services" id="services">
-        <div class="container">
-            <div class="section-title">
-                <h2>Xidmətlərimiz</h2>
-                <p>Biznesinizi inkişaf etdirmək üçün lazım olan hər şey</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card" data-aos="flip-left" data-aos-delay="100">
-                    <div class="service-icon">⚙️</div>
-                    <h3>Veb Dizayn</h3>
-                    <p>Müasir, təsirli və istifadəçi dostu veb saytlar hazırlayırıq. Responsiv dizaynlarımız bütün cihazlarda mükəmməl görüntü təmin edir.</p>
-                    <a href="#contact" class="btn">Təklif Alın</a>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🛒</div>
-                    <h3>Elektron Ticarət Həlləri</h3>
-                    <p>Onlayn satış edə biləcəyiniz, idarə etməsi asan və təhlükəsiz elektron ticarət saytları hazırlayırıq. Ödəniş inteqrasiyaları və inventar idarəçiliyi daxildir.</p>
-                    <a href="#contact" class="btn">Təklif Alın</a>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">📱</div>
-                    <h3>Mobil Uyğunluq</h3>
-                    <p>Bütün saytlarımız mobil cihazlarla tam uyğundur. İstifadəçiləriniz harada olursa olsun mükəmməl təcrübə yaşayacaqlar.</p>
-                    <a href="#contact" class="btn">Təklif Alın</a>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🔍</div>
-                    <h3>SEO Optimallaşdırma</h3>
-                    <p>Axtarış sistemlərində yüksəldin. SEO-uyğun kodlama və kontent strategiyaları ilə ziyarətçi sayınızı artırın.</p>
-                    <a href="#contact" class="btn">Təklif Alın</a>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🔄</div>
-                    <h3>Dəstək & Baxım</h3>
-                    <p>Saytınızın güncəllənmiş və təhlükəsiz qalmasını təmin edirik. Texniki dəstək və baxım xidmətləri ilə yanınızdayıq.</p>
-                    <a href="#contact" class="btn">Təklif Alın</a>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">📊</div>
-                    <h3>Analiz & Hesabatlar</h3>
-                    <p>Veb saytınızın performansını izləyirik. Saytınızın inkişafı və ehtiyacları haqqında müntəzəm hesabatlar ilə məlumatlanın.</p>
-                    <a href="#contact" class="btn">Təklif Alın</a>
-                </div>
+            
+            <div class="text-center mt-5" data-aos="fade-up">
+                <a href="#portfolio" class="btn btn-primary">Daha Çox İşə Baxın</a>
             </div>
         </div>
     </section>
 
-    <!-- Client Testimonials -->
-    <section class="testimonials" id="testimonials">
+    <!-- Testimonials Section -->
+    <section class="section testimonials" id="testimonials">
         <div class="container">
-            <div class="section-title">
-                <h2>Müştəri Rəyləri</h2>
-                <p>Müştərilərimizin bizimlə iş təcrübələri</p>
+            <div class="section-title" data-aos="fade-up">
+                <h2>Müştəri <span>Rəyləri</span></h2>
+                <p>Bizimlə işləyən müştərilərimizin rəyləri</p>
             </div>
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>NovaWeb komandası ilə işləmək əla təcrübə idi. Tələblərimizi tam başa düşdülər və gözləntilərimizi üstələyən bir sayt hazırladılar. Elektron ticarət saytımız sayəsində satışlarımız 40% artdı!</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <img src="/novaweb/images/people/p3.jpeg" alt="Ayşə Demir">
-                        <div class="author-info">
-                            <h4>Ayşə Demir</h4>
-                            <p>Green Market, Qurucu</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>Hüquq şirkətimiz üçün hazırladıqları peşəkar dizayn müştərilərimiz tərəfindən çox yüksək qiymətləndirildi. İş prosesləri çox aydın və şəffaf idi. Şiddətlə tövsiyə edirəm.</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <img src="/novaweb/images/people/p4.jpeg" alt="Kemal Öztürk">
-                        <div class="author-info">
-                            <h4>Kemal Öztürk</h4>
-                            <p>Öztürk Law, Vəkil</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>Portfolio saytım üçün NovaWeb-i seçdim və bu qərarım tam doğru oldu. Çox peşəkar komandadır və gözəl iş çıxardırlar. İndi bütün işlərimi burada həll etdirirəm.</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <img src="/novaweb/images/people/p5.jpeg" alt="Ali Yıldız">
-                        <div class="author-info">
-                            <h4>Ali Yıldız</h4>
-                            <p>Freelance Fotoqraf</p>
-                        </div>
+            
+            <div class="testimonial-slider" data-aos="fade-up">
+                <div class="splide">
+                    <div class="splide__track">
+                        <ul class="splide__list">
+                            <li class="splide__slide">
+                                <div class="testimonial-card">
+                                    <div class="testimonial-content">
+                                        <p>NovaWeb komandası ilə işləmək çox xoş təcrübə idi. Tələblərimizi tam başa düşdülər və gözləntilərimizi üstələyən bir sayt hazırladılar. Elektron ticarət saytımız sayəsində satışlarımız 40% artdı!</p>
+                                    </div>
+                                    <div class="testimonial-author">
+                                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Ayşə Demir">
+                                        <div class="author-info">
+                                            <h4>Ayşə Demir</h4>
+                                            <p>Green Market, Qurucu</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            <li class="splide__slide">
+                                <div class="testimonial-card">
+                                    <div class="testimonial-content">
+                                        <p>Hüquq şirkətimiz üçün hazırladıqları peşəkar dizayn müştərilərimiz tərəfindən çox yüksək qiymətləndirildi. İş prosesləri çox aydın və şəffaf idi. Şiddətlə tövsiyə edirəm.</p>
+                                    </div>
+                                    <div class="testimonial-author">
+                                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Kemal Öztürk">
+                                        <div class="author-info">
+                                            <h4>Kemal Öztürk</h4>
+                                            <p>Öztürk Law, Vəkil</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            <li class="splide__slide">
+                                <div class="testimonial-card">
+                                    <div class="testimonial-content">
+                                        <p>Portfolio saytım üçün NovaWeb-i seçdim və bu qərarım tam doğru oldu. Çox peşəkar komandadır və gözəl iş çıxardırlar. İndi bütün işlərimi burada həll etdirirəm.</p>
+                                    </div>
+                                    <div class="testimonial-author">
+                                        <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Ali Yıldız">
+                                        <div class="author-info">
+                                            <h4>Ali Yıldız</h4>
+                                            <p>Freelance Fotoqraf</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact -->
-    <section class="contact" id="contact">
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
         <div class="container">
-            <div class="section-title">
-                <h2>Əlaqə</h2>
-                <p>Layihənizi reallığa çevirmək üçün bizimlə əlaqə saxlayın</p>
+            <div class="section-title" data-aos="fade-up">
+                <h2>Bizimlə <span>Əlaqə</span></h2>
+                <p>Layihəniz haqqında bizimlə əlaqə saxlayın və pulsuz konsultasiya əldə edin</p>
             </div>
+            
             <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Əlaqə Məlumatları</h3>
+                <div class="contact-info" data-aos="fade-right">
+                    <h3>Əlaqə məlumatları</h3>
+                    <p>Bizimlə əlaqə saxlamaq üçün aşağıdakı ünvan və kontakt məlumatlarından istifadə edə bilərsiniz.</p>
+                    
                     <div class="contact-details">
                         <div class="contact-item">
-                            <div class="contact-icon">📍</div>
-                            <p>Bakı, Azərbaycan</p>
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Ünvan</h4>
+                                <p>Bakı, Azərbaycan</p>
+                            </div>
                         </div>
+                        
                         <div class="contact-item">
-                            <div class="contact-icon">📱</div>
-                            <p>+994 55 364 02 88</p>
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Telefon</h4>
+                                <a href="tel:+994553640288">+994 55 364 02 88</a>
+                            </div>
                         </div>
+                        
                         <div class="contact-item">
-                            <div class="contact-icon">✉️</div>
-                            <p>info@novaweb.com</p>
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Email</h4>
+                                <a href="mailto:info@novaweb.com">info@novaweb.com</a>
+                            </div>
                         </div>
                     </div>
-                    <div class="quick-contact">
-                        <h3>Sürətli Əlaqə</h3>
-                        <a href="https://wa.me/994553640288" class="whatsapp-btn" target="_blank">
-                            <span class="whatsapp-icon">📱</span> WhatsApp üzərindən yazın
-                        </a>
+                    
+                    <div class="social-links">
+                        <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
-                <div class="contact-form">
-                    <h3>Mesaj Göndərin</h3>
+                
+                <div class="contact-form" data-aos="fade-left">
+                    <h3>Mesaj göndərin</h3>
+                    
                     <form id="contactForm" onsubmit="sendToWhatsApp(event)">
                         <div class="form-group">
                             <label for="name">Adınız</label>
-                            <input type="text" id="name" name="name" class="form-control" required>
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Adınızı daxil edin" required>
                         </div>
+                        
                         <div class="form-group">
-                            <label for="email">Email Ünvanınız</label>
-                            <input type="email" id="email" name="email" class="form-control" required>
+                            <label for="email">Email ünvanınız</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Emailinizi daxil edin" required>
                         </div>
+                        
                         <div class="form-group">
-                            <label for="phone">Telefon Nömrəniz</label>
-                            <input type="tel" id="phone" name="phone" class="form-control">
+                            <label for="phone">Telefon nömrəniz</label>
+                            <input type="tel" id="phone" name="phone" class="form-control" placeholder="Telefon nömrənizi daxil edin">
                         </div>
+                        
                         <div class="form-group">
                             <label for="subject">Mövzu</label>
-                            <input type="text" id="subject" name="subject" class="form-control" required>
+                            <input type="text" id="subject" name="subject" class="form-control" placeholder="Mövzunu daxil edin" required>
                         </div>
+                        
                         <div class="form-group">
                             <label for="message">Mesajınız</label>
-                            <textarea id="message" name="message" class="form-control" required></textarea>
+                            <textarea id="message" name="message" class="form-control" placeholder="Mesajınızı daxil edin" required></textarea>
                         </div>
-                        <button type="submit" class="btn-submit">Mesaj Göndər</button>
+                        
+                        <button type="submit" class="btn btn-primary btn-block">Mesaj Göndər</button>
                     </form>
                 </div>
             </div>
@@ -1468,158 +1828,347 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-column">
+                <div class="footer-column footer-about">
                     <h3>NovaWeb Haqqında</h3>
-                    <p>Bizneslərin güclü onlayn mövcudluq qurmasına və rəqəmsal məqsədlərinə çatmasına kömək edən premium veb saytlar hazırlayırıq.</p>
+                    <p>Biz rəqəmsal dünyada uğur qazanmaq istəyən bizneslər üçün innovativ və effektiv həllər təqdim edirik.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
                 </div>
+                
                 <div class="footer-column">
                     <h3>Sürətli Keçidlər</h3>
                     <ul class="footer-links">
-                        <li><a href="#home">Əsas Səhifə</a></li>
-                        <li><a href="#about">Haqqımızda</a></li>
-                        <li><a href="#services">Xidmətlər</a></li>
-                        <li><a href="#portfolio">Portfolio</a></li>
-                        <li><a href="#contact">Əlaqə</a></li>
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Əsas Səhifə</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> Haqqımızda</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Xidmətlər</a></li>
+                        <li><a href="#portfolio"><i class="fas fa-chevron-right"></i> Portfolio</a></li>
+                        <li><a href="#testimonials"><i class="fas fa-chevron-right"></i> Rəylər</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Əlaqə</a></li>
                     </ul>
                 </div>
+                
+                <div class="footer-column">
+                    <h3>Xidmətlərimiz</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Veb Dizayn</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Veb İnkişaf</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Elektron Ticarət</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> SEO Optimallaşdırma</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Rəqəmsal Marketinq</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Hosting & Dəstək</a></li>
+                    </ul>
+                </div>
+                
                 <div class="footer-column">
                     <h3>Əlaqə Məlumatları</h3>
-                    <ul class="footer-links">
-                        <li><i class="fas fa-map-marker-alt"></i> Bakı, Azərbaycan</li>
-                        <li><i class="fas fa-phone"></i> +994 55 364 02 88</li>
-                        <li><i class="fas fa-envelope"></i> info@novaweb.com</li>
-                    </ul>
+                    <div class="footer-contact-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Bakı, Azərbaycan</p>
+                    </div>
+                    <div class="footer-contact-info">
+                        <i class="fas fa-phone-alt"></i>
+                        <p>+994 55 364 02 88</p>
+                    </div>
+                    <div class="footer-contact-info">
+                        <i class="fas fa-envelope"></i>
+                        <p>info@novaweb.com</p>
+                    </div>
                 </div>
             </div>
+            
             <div class="footer-bottom">
                 <p>&copy; 2023 NovaWeb. Bütün hüquqlar qorunur.</p>
             </div>
         </div>
     </footer>
 
-    <!-- WhatsApp integration JavaScript -->
-    <script>
-        function sendToWhatsApp(event) {
-            event.preventDefault();
-            
-            // Form verilerini al
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
-            
-            // WhatsApp mesajını oluştur
-            const whatsappMessage = 
-                `*Yeni Veb Sayt Mesajı*\n\n` +
-                `*Ad:* ${name}\n` +
-                `*Email:* ${email}\n` +
-                `*Telefon:* ${phone}\n` +
-                `*Mövzu:* ${subject}\n\n` +
-                `*Mesaj:*\n${message}`;
-            
-            // WhatsApp API URL'sini oluştur
-            const whatsappUrl = `https://wa.me/994553640288?text=${encodeURIComponent(whatsappMessage)}`;
-            
-            // Yeni sekmede WhatsApp web'i aç
-            window.open(whatsappUrl, '_blank');
-            
-            // Form başarılı mesajı göster
-            const formElement = document.getElementById('contactForm');
-            
-            // Başarı mesajı göster
-            const successMessage = document.createElement('div');
-            successMessage.className = 'form-success-message';
-            successMessage.style.display = 'block';
-            successMessage.textContent = 'Mesajınız uğurla göndərildi! WhatsApp üzərindən davam edə bilərsiniz.';
-            
-            formElement.prepend(successMessage);
-            
-            // Formu sıfırla
-            formElement.reset();
-            
-            // 5 saniye sonra başarı mesajını kaldır
-            setTimeout(() => {
-                successMessage.style.display = 'none';
-            }, 5000);
-        }
-    </script>
+    <!-- Back to Top Button -->
+    <a href="#home" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
 
-    <!-- AOS Animation Library -->
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/994553640288" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span>WhatsApp</span>
+    </a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+   <!--- <script src="//code.tidio.co/ofns8nwsaqoherwpewiengwofkj9q8rb.js" async></script> ->
+
+    <!-- Main JavaScript -->
     <script>
+        // Preloader
+        $(window).on('load', function() {
+            $('.preloader').addClass('fade-out');
+            setTimeout(function() {
+                $('.preloader').remove();
+            }, 500);
+        });
+        
+        // Mobile Menu Toggle
+        $('.mobile-menu').on('click', function() {
+            $(this).toggleClass('active');
+            $('.nav-menu').toggleClass('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        $('.nav-menu a').on('click', function() {
+            $('.mobile-menu').removeClass('active');
+            $('.nav-menu').removeClass('active');
+        });
+        
+        // Smooth scrolling for anchor links
+        $('a[href*="#"]').on('click', function(e) {
+            e.preventDefault();
+            
+            $('html, body').animate(
+                {
+                    scrollTop: $($(this).attr('href')).offset().top - 80,
+                },
+                500,
+                'linear'
+            );
+        });
+        
+        // Header scroll effect
+        $(window).on('scroll', function() {
+            if ($(this).scrollTop() > 100) {
+                $('header').addClass('scrolled');
+            } else {
+                $('header').removeClass('scrolled');
+            }
+        });
+        
+        // Back to top button
+        $(window).on('scroll', function() {
+            if ($(this).scrollTop() > 300) {
+                $('.back-to-top').addClass('active');
+            } else {
+                $('.back-to-top').removeClass('active');
+            }
+        });
+        
+        // Testimonial slider
+        document.addEventListener('DOMContentLoaded', function() {
+            new Splide('.splide', {
+                type: 'loop',
+                perPage: 1,
+                autoplay: true,
+                interval: 5000,
+                pauseOnHover: false,
+                arrows: false,
+                pagination: false,
+                breakpoints: {
+                    768: {
+                        perPage: 1,
+                    }
+                }
+            }).mount();
+        });
+        
+        // AOS Animation
         AOS.init({
             duration: 800,
             easing: 'ease-in-out',
-            once: true
-        });
-    </script>
-
-    <!-- Mobile Menu Toggle -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenu = document.querySelector('.mobile-menu');
-            const navMenu = document.querySelector('.nav-menu');
-            
-            mobileMenu.addEventListener('click', function() {
-                mobileMenu.classList.toggle('active');
-                navMenu.classList.toggle('active');
-                
-                // Add animation to menu bars
-                const bars = document.querySelectorAll('.bar');
-                bars.forEach(bar => {
-                    bar.style.transition = 'transform 0.3s ease';
-                });
-                
-                if(mobileMenu.classList.contains('active')) {
-                    bars[0].style.transform = 'rotate(-45deg) translate(-5px, 6px)';
-                    bars[1].style.opacity = '0';
-                    bars[2].style.transform = 'rotate(45deg) translate(-5px, -6px)';
-                } else {
-                    bars[0].style.transform = 'none';
-                    bars[1].style.opacity = '1';
-                    bars[2].style.transform = 'none';
-                }
-            });
-        });
-    </script>
-
-    <!-- Google Translate Widget Script -->
-    <script type="text/javascript">
-        // Only load the Google Translate script when the toggle button is clicked
-        document.addEventListener("DOMContentLoaded", function() {
-            const toggleButton = document.getElementById('translateToggle');
-            const widget = document.getElementById('translateWidget');
-            let scriptLoaded = false;
-            
-            // Toggle function for the translate widget
-            toggleButton.addEventListener('click', function() {
-                widget.classList.toggle('active');
-                
-                // Load Google Translate script on first click if not already loaded
-                if (!scriptLoaded) {
-                    const translateScript = document.createElement('script');
-                    translateScript.type = 'text/javascript';
-                    translateScript.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
-                    document.head.appendChild(translateScript);
-                    scriptLoaded = true;
-                }
-            });
+            once: true,
+            offset: 100
         });
         
-        // Initialize Google Translate when the script loads
+        // Google Translate Widget
         function googleTranslateElementInit() {
-            new google.translate.TranslateElement(
-                { 
-                    pageLanguage: 'az',
-                    // Don't specify includedLanguages to include all available languages
-                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-                },
-                'google_translate_element'
-            );
+            new google.translate.TranslateElement({
+                pageLanguage: 'az',
+                includedLanguages: 'en,ru,tr,fr,de',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+            }, 'google_translate_element');
+            
+            // Remove Google branding
+            $('.goog-logo-link').css('display', 'none');
+            $('.goog-te-gadget').css('font-size', '0');
         }
+        
+        // Load Google Translate script
+        function loadGoogleTranslate() {
+            var script = document.createElement('script');
+            script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+            document.body.appendChild(script);
+        }
+        
+        // Initialize when document is ready
+        $(document).ready(function() {
+            loadGoogleTranslate();
+            
+            // Portfolio Filter
+            $('.portfolio-filter button').on('click', function(){
+                $('.portfolio-filter button').removeClass('active');
+                $(this).addClass('active');
+                
+                const filter = $(this).attr('data-filter');
+                $('.portfolio-items').isotope({
+                    filter: filter
+                });
+            });
+            
+            // Initialize Isotope
+            $('.portfolio-items').isotope({
+                itemSelector: '.portfolio-item',
+                layoutMode: 'fitRows'
+            });
+        });
+                
+        // WhatsApp Form Submission
+        function sendToWhatsApp(event) {
+            event.preventDefault();
+            
+            const name = $('#name').val();
+            const email = $('#email').val();
+            const phone = $('#phone').val();
+            const subject = $('#subject').val();
+            const message = $('#message').val();
+            
+            const whatsappMessage = 
+                `*Yeni Mesaj*%0A%0A` +
+                `*Ad:* ${name}%0A` +
+                `*Email:* ${email}%0A` +
+                `*Telefon:* ${phone}%0A` +
+                `*Mövzu:* ${subject}%0A%0A` +
+                `*Mesaj:*%0A${message}`;
+            
+            const whatsappUrl = `https://wa.me/994553640288?text=${whatsappMessage}`;
+            
+            window.open(whatsappUrl, '_blank');
+            
+            // Show success message
+            const successMessage = `
+                <div class="form-success-message">
+                    <i class="fas fa-check-circle mr-2"></i> Mesajınız uğurla göndərildi! WhatsApp üzərindən davam edə bilərsiniz.
+                </div>
+            `;
+            
+            $('#contactForm').prepend(successMessage);
+            $('#contactForm')[0].reset();
+            
+            setTimeout(() => {
+                $('.form-success-message').fadeOut();
+            }, 5000);
+        }
+        
+        // Particles.js Background
+        particlesJS('hero', {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#4cc9f0"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    }
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#4cc9f0",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 2,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 140,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
     </script>
-<script src="//code.tidio.co/ofns8nwsaqoherwpewiengwofkj9q8rb.js" async></script>
-    
 </body>
 </html>
