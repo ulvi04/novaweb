@@ -580,15 +580,16 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
             margin-bottom: 40px;
         }
         
         .portfolio-filter button {
-            padding: 8px 20px;
+            padding: 6px 12px;
             border: none;
             background: none;
             font-weight: 600;
+            font-size: 0.9rem;
             color: var(--gray);
             cursor: pointer;
             transition: var(--transition);
@@ -612,7 +613,9 @@
             border-radius: var(--border-radius-lg);
             overflow: hidden;
             box-shadow: var(--shadow-md);
-            transition: var(--transition);
+            transition: all 0.3s ease-out;
+            opacity: 1;
+            transform: scale(1);
         }
         
         .portfolio-item:hover {
@@ -629,6 +632,16 @@
         
         .portfolio-item:hover img {
             transform: scale(1.05);
+        }
+
+        .portfolio-item.filtered-out {
+            opacity: 0;
+            transform: scale(0.95);
+            height: 0;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+            border: none;
         }
         
         .portfolio-info {
@@ -1163,6 +1176,27 @@
                 top: -10px;
                 right: 10px;
             }
+
+            .portfolio-item {
+                transition: all 0.2s ease-out;
+            }
+
+            .portfolio-item.filtered-out {
+                transform: translateY(20px);
+            }
+            
+            .portfolio-info {
+                padding: 15px;
+            }
+            
+            .portfolio-info h3 {
+                font-size: 1.2rem;
+            }
+            
+            .portfolio-info p {
+                font-size: 0.9rem;
+                margin-bottom: 10px;
+            }
         }
         
         @media (max-width: 576px) {
@@ -1185,10 +1219,13 @@
             .portfolio-filter {
                 flex-direction: column;
                 align-items: center;
+                justify-content: flex-start;
             }
             
             .portfolio-filter button {
                 width: 100%;
+                flex: 1 0 calc(50% - 8px);
+                text-align: center;
             }
             
             .portfolio-items {
@@ -1925,19 +1962,19 @@
                 $('.preloader').remove();
             }, 500);
         });
-        
+    
         // Mobile Menu Toggle
         $('.mobile-menu').on('click', function() {
             $(this).toggleClass('active');
             $('.nav-menu').toggleClass('active');
         });
-        
+    
         // Close mobile menu when clicking on a link
         $('.nav-menu a').on('click', function() {
             $('.mobile-menu').removeClass('active');
             $('.nav-menu').removeClass('active');
         });
-        
+    
         // Smooth scrolling for anchor links
         $('a[href*="#"]').on('click', function(e) {
             e.preventDefault();
@@ -1950,7 +1987,7 @@
                 'linear'
             );
         });
-        
+    
         // Header scroll effect
         $(window).on('scroll', function() {
             if ($(this).scrollTop() > 100) {
@@ -1959,7 +1996,7 @@
                 $('header').removeClass('scrolled');
             }
         });
-        
+    
         // Back to top button
         $(window).on('scroll', function() {
             if ($(this).scrollTop() > 300) {
@@ -1968,7 +2005,7 @@
                 $('.back-to-top').removeClass('active');
             }
         });
-        
+    
         // Testimonial slider
         document.addEventListener('DOMContentLoaded', function() {
             new Splide('.splide', {
@@ -1986,15 +2023,15 @@
                 }
             }).mount();
         });
-        
+    
         // AOS Animation
         AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
+            duration: 600,
+            easing: 'ease-out',
             once: true,
             offset: 100
         });
-        
+    
         // Google Translate Widget
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
@@ -2008,33 +2045,53 @@
             $('.goog-logo-link').css('display', 'none');
             $('.goog-te-gadget').css('font-size', '0');
         }
-        
+    
         // Load Google Translate script
         function loadGoogleTranslate() {
             var script = document.createElement('script');
             script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
             document.body.appendChild(script);
         }
-        
-        // Initialize when document is ready
-        $(document).ready(function() {
-            loadGoogleTranslate();
-            
-            // Portfolio Filter
-            $('.portfolio-filter button').on('click', function(){
+    
+        // SIMPLE PORTFOLIO FILTER WITH SMOOTH ANIMATIONS
+        function initPortfolio() {
+            // Filter items on button click
+            $('.portfolio-filter button').on('click', function() {
                 $('.portfolio-filter button').removeClass('active');
                 $(this).addClass('active');
                 
-                const filter = $(this).attr('data-filter');
-                $('.portfolio-items').isotope({
-                    filter: filter
-                });
+                var filterValue = $(this).attr('data-filter');
+                
+                if (filterValue === '*') {
+                    // Show all items with animation
+                    $('.portfolio-item').removeClass('hidden')
+                                       .css('opacity', '0')
+                                       .animate({'opacity': '1'}, 300);
+                } else {
+                    // Hide all items first
+                    $('.portfolio-item').addClass('hidden')
+                                        .css('opacity', '1')
+                                        .animate({'opacity': '0'}, 300, function() {
+                                            $(this).addClass('hidden');
+                                        });
+                    
+                    // Show matching items with animation
+                    $(filterValue).removeClass('hidden')
+                                 .css('opacity', '0')
+                                 .animate({'opacity': '1'}, 300);
+                }
             });
+        }
+    
+        // Initialize when document is ready
+        $(document).ready(function() {
+            loadGoogleTranslate();
+            initPortfolio();
             
-            // Initialize Isotope
-            $('.portfolio-items').isotope({
-                itemSelector: '.portfolio-item',
-                layoutMode: 'fitRows'
+            // Mobile translate button for mobile menu
+            $('.mobile-translate .goog-te-combo').on('change', function() {
+                $('.mobile-menu').removeClass('active');
+                $('.nav-menu').removeClass('active');
             });
         });
                 
@@ -2074,112 +2131,92 @@
                 $('.form-success-message').fadeOut();
             }, 5000);
         }
-        
-        // Particles.js Background
-        particlesJS('hero', {
-            "particles": {
-                "number": {
-                    "value": 80,
-                    "density": {
-                        "enable": true,
-                        "value_area": 800
-                    }
-                },
-                "color": {
-                    "value": "#4cc9f0"
-                },
-                "shape": {
-                    "type": "circle",
-                    "stroke": {
-                        "width": 0,
-                        "color": "#000000"
-                    },
-                    "polygon": {
-                        "nb_sides": 5
-                    }
-                },
-                "opacity": {
-                    "value": 0.5,
-                    "random": false,
-                    "anim": {
-                        "enable": false,
-                        "speed": 1,
-                        "opacity_min": 0.1,
-                        "sync": false
-                    }
-                },
-                "size": {
-                    "value": 3,
-                    "random": true,
-                    "anim": {
-                        "enable": false,
-                        "speed": 40,
-                        "size_min": 0.1,
-                        "sync": false
-                    }
-                },
-                "line_linked": {
-                    "enable": true,
-                    "distance": 150,
-                    "color": "#4cc9f0",
-                    "opacity": 0.4,
-                    "width": 1
-                },
-                "move": {
-                    "enable": true,
-                    "speed": 2,
-                    "direction": "none",
-                    "random": false,
-                    "straight": false,
-                    "out_mode": "out",
-                    "bounce": false,
-                    "attract": {
-                        "enable": false,
-                        "rotateX": 600,
-                        "rotateY": 1200
-                    }
-                }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": {
-                    "onhover": {
-                        "enable": true,
-                        "mode": "grab"
-                    },
-                    "onclick": {
-                        "enable": true,
-                        "mode": "push"
-                    },
-                    "resize": true
-                },
-                "modes": {
-                    "grab": {
-                        "distance": 140,
+    
+        // Particles.js Background (disabled on mobile)
+        function initParticles() {
+            if (window.innerWidth > 768) {
+                particlesJS('hero', {
+                    "particles": {
+                        "number": {
+                            "value": 60,
+                            "density": {
+                                "enable": true,
+                                "value_area": 800
+                            }
+                        },
+                        "color": {
+                            "value": "#4cc9f0"
+                        },
+                        "shape": {
+                            "type": "circle",
+                            "stroke": {
+                                "width": 0,
+                                "color": "#000000"
+                            }
+                        },
+                        "opacity": {
+                            "value": 0.4,
+                            "random": false
+                        },
+                        "size": {
+                            "value": 3,
+                            "random": true
+                        },
                         "line_linked": {
-                            "opacity": 1
+                            "enable": true,
+                            "distance": 120,
+                            "color": "#4cc9f0",
+                            "opacity": 0.3,
+                            "width": 1
+                        },
+                        "move": {
+                            "enable": true,
+                            "speed": 1.5,
+                            "direction": "none",
+                            "random": false,
+                            "straight": false,
+                            "out_mode": "out",
+                            "bounce": false
                         }
                     },
-                    "bubble": {
-                        "distance": 400,
-                        "size": 40,
-                        "duration": 2,
-                        "opacity": 8,
-                        "speed": 3
+                    "interactivity": {
+                        "detect_on": "canvas",
+                        "events": {
+                            "onhover": {
+                                "enable": true,
+                                "mode": "grab"
+                            },
+                            "onclick": {
+                                "enable": true,
+                                "mode": "push"
+                            },
+                            "resize": true
+                        },
+                        "modes": {
+                            "grab": {
+                                "distance": 120,
+                                "line_linked": {
+                                    "opacity": 0.8
+                                }
+                            },
+                            "push": {
+                                "particles_nb": 3
+                            }
+                        }
                     },
-                    "repulse": {
-                        "distance": 200,
-                        "duration": 0.4
-                    },
-                    "push": {
-                        "particles_nb": 4
-                    },
-                    "remove": {
-                        "particles_nb": 2
-                    }
-                }
-            },
-            "retina_detect": true
+                    "retina_detect": true
+                });
+            }
+        }
+    
+        // Initialize particles after load
+        $(window).on('load', initParticles);
+        $(window).on('resize', function() {
+            // Re-init particles if switching between mobile/desktop
+            if ($('#particles-js canvas').length) {
+                $('#particles-js canvas').remove();
+            }
+            initParticles();
         });
     </script>
 </body>
