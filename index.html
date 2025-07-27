@@ -1,0 +1,1722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>NovaWeb - Premium Web Design Agency</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#6366f1',secondary:'#818cf8'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .typing-animation::after {
+            content: "|";
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-delay-1 {
+            animation-delay: 1s;
+        }
+        
+        .floating-delay-2 {
+            animation-delay: 2s;
+        }
+        
+        .floating-delay-3 {
+            animation-delay: 3s;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .scroll-indicator {
+            animation: scrollDown 2s infinite;
+        }
+        
+        @keyframes scrollDown {
+            0% { transform: translateY(0); opacity: 0.7; }
+            50% { transform: translateY(10px); opacity: 0.2; }
+            100% { transform: translateY(0); opacity: 0.7; }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .work-item:hover .work-overlay {
+            opacity: 1;
+        }
+        
+        .work-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .custom-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: rgba(99, 102, 241, 0.5);
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s, background-color 0.3s;
+            mix-blend-mode: difference;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #6366f1;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .blog-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        input:not([type="checkbox"]):not([type="radio"]):focus,
+        textarea:focus {
+            outline: none;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+        
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            border-radius: 5px;
+            background: #e5e7eb;
+            outline: none;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #6366f1;
+            cursor: pointer;
+            transition: background 0.15s ease;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb:hover {
+            background: #4f46e5;
+        }
+        
+        .custom-checkbox {
+            position: relative;
+            padding-left: 30px;
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        .custom-checkbox input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+        
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: #fff;
+            border: 2px solid #d1d5db;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        
+        .custom-checkbox:hover input ~ .checkmark {
+            border-color: #9ca3af;
+        }
+        
+        .custom-checkbox input:checked ~ .checkmark {
+            background-color: #6366f1;
+            border-color: #6366f1;
+        }
+        
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+        
+        .custom-checkbox input:checked ~ .checkmark:after {
+            display: block;
+        }
+        
+        .custom-checkbox .checkmark:after {
+            left: 6px;
+            top: 2px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+        
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #e5e7eb;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: #6366f1;
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        
+        .radio-container {
+            display: block;
+            position: relative;
+            padding-left: 30px;
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        .radio-container input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+        
+        .radio-checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: #fff;
+            border: 2px solid #d1d5db;
+            border-radius: 50%;
+        }
+        
+        .radio-container:hover input ~ .radio-checkmark {
+            border-color: #9ca3af;
+        }
+        
+        .radio-container input:checked ~ .radio-checkmark {
+            background-color: #fff;
+            border-color: #6366f1;
+        }
+        
+        .radio-checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+        
+        .radio-container input:checked ~ .radio-checkmark:after {
+            display: block;
+        }
+        
+        .radio-container .radio-checkmark:after {
+            top: 3px;
+            left: 3px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #6366f1;
+        }
+
+        /* Responsive Typography */
+        h1 {
+            font-size: 2.5rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2rem;
+        }
+
+        h3 {
+            font-size: 1.75rem;
+        }
+
+        h4 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            font-size: 1rem;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            html {
+                font-size: 15px;
+            }
+
+            h1 {
+                font-size: 2.25rem;
+            }
+
+            h2 {
+                font-size: 1.75rem;
+            }
+
+            h3 {
+                font-size: 1.5rem;
+            }
+
+            #home {
+                padding-top: 6rem;
+                padding-bottom: 4rem;
+                min-height: auto;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                order: -1;
+                margin-bottom: 2rem;
+            }
+
+            .timeline-container > div {
+                flex-direction: column;
+            }
+
+            .timeline-container > div > div {
+                width: 100% !important;
+                padding: 0 !important;
+                text-align: left !important;
+                margin-bottom: 1rem;
+            }
+
+            .timeline-container > div > div:last-child {
+                margin-bottom: 3rem;
+            }
+
+            .timeline-container > div > div img {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+
+            #contact .grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            #contact .space-y-8 > div {
+                margin-top: 2rem;
+            }
+
+            footer .grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            footer > div > div {
+                margin-bottom: 2rem;
+            }
+
+            .floating-elements {
+                display: none;
+            }
+        }
+
+        @media (max-width: 640px) {
+            html {
+                font-size: 14px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .btn-primary, .btn-secondary {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            input, textarea, select {
+                padding: 0.75rem;
+            }
+
+            .work-filter-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            #works-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            h1 {
+                font-size: 4rem;
+            }
+
+            #works-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Touch target sizing */
+        a, button, input[type="submit"], input[type="button"] {
+            min-height: 44px;
+            min-width: 44px;
+        }
+
+        /* For smaller interactive elements */
+        .nav-link, .social-icon {
+            position: relative;
+        }
+
+        .nav-link::after, .social-icon::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+        }
+
+        /* Mobile menu animation */
+        #mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        #mobile-menu.translate-x-0 {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <div class="custom-cursor hidden md:block"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full bg-white bg-opacity-95 shadow-sm z-50 py-4 backdrop-blur-sm">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="#home" class="font-['Pacifico'] text-3xl text-primary">NovaWeb</a>
+            
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="nav-link text-gray-800 hover:text-primary transition-colors">Ana səhifə</a>
+                <a href="#about" class="nav-link text-gray-800 hover:text-primary transition-colors">Haqqımızda</a>
+                <a href="#works" class="nav-link text-gray-800 hover:text-primary transition-colors">İşlərimiz</a>
+                <a href="#certifications" class="nav-link text-gray-800 hover:text-primary transition-colors">Sertifikasiyalar</a>
+                <a href="#blog" class="nav-link text-gray-800 hover:text-primary transition-colors">Blog</a>
+                <a href="#contact" class="ml-4 px-6 py-2 bg-primary text-white !rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap">Əlaqə</a>
+            </div>
+            
+            <button class="md:hidden w-10 h-10 flex items-center justify-center text-gray-800 relative z-50" id="mobile-menu-button">
+                <i class="ri-menu-line ri-lg" id="menu-icon"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white w-full fixed top-0 left-0 h-screen pt-20 shadow-md transform translate-x-full transition-transform duration-300 ease-in-out">
+            <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
+                <a href="#home" class="text-gray-800 hover:text-primary transition-colors py-3 text-lg">Ana Səhifə</a>
+                <a href="#about" class="text-gray-800 hover:text-primary transition-colors py-3 text-lg">Haqqımızda</a>
+                <a href="#works" class="text-gray-800 hover:text-primary transition-colors py-3 text-lg">İşlərimiz</a>
+                <a href="#certifications" class="text-gray-800 hover:text-primary transition-colors py-3 text-lg">Sertifikasiyalar</a>
+                <a href="#blog" class="text-gray-800 hover:text-primary transition-colors py-3 text-lg">Blog</a>
+                <a href="#contact" class="inline-block px-6 py-3 bg-primary text-white !rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap text-lg mt-4">Sertifikasiyalar</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-20 overflow-hidden" style="background-image: url('https://readdy.ai/api/search-image?query=modern%20tech%20background%20with%20abstract%20digital%20particles%2C%20glowing%20blue%20and%20purple%20geometric%20patterns%2C%20futuristic%20technology%20concept%20with%20dark%20background%20and%20floating%203D%20elements%2C%20suitable%20for%20web%20design%20company%20hero%20section&width=1920&height=1080&seq=hero1&orientation=landscape'); background-size: cover; background-position: center;">
+        <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30"></div>
+        
+        <div class="container mx-auto px-6 py-24 md:py-32 relative z-10">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+                        <span class="font-['Pacifico'] text-primary">NovaWeb</span>
+                        <div class="mt-4 typing-animation" id="typing-text">Rəqəmsal Təcrübələrin Yaradılması</div>
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-200 mb-8">Biz ideyaları müstəsna veb təcrübələrinə çeviririk. Mütəxəssislərdən ibarət komandamız diqqət çəkən vebsaytlar yaratmaq üçün yaradıcılığı və texnologiyanı birləşdirir.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#works" class="px-6 md:px-8 py-3 bg-primary text-white !rounded-button hover:bg-primary/90 transition-all transform hover:-translate-y-1 whitespace-nowrap">İşimizə Baxın</a>
+                        <a href="#contact" class="px-6 md:px-8 py-3 bg-transparent border-2 border-white text-white !rounded-button hover:bg-white/10 transition-all transform hover:-translate-y-1 whitespace-nowrap">Əlaqə saxlayın</a>
+                    </div>
+                </div>
+                
+                <div class="relative hidden md:block floating-elements">
+                    <div class="floating absolute -top-16 -right-8 w-24 h-24 bg-primary/20 rounded-xl"></div>
+                    <div class="floating floating-delay-1 absolute top-40 -right-16 w-32 h-32 bg-secondary/20 rounded-full"></div>
+                    <div class="floating floating-delay-2 absolute bottom-0 right-20 w-20 h-20 bg-primary/30 rounded-lg rotate-45"></div>
+                    <div class="floating floating-delay-3 absolute bottom-20 left-0 w-16 h-16 bg-secondary/30 rounded-full"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 scroll-indicator">
+            <div class="w-8 h-12 border-2 border-white/50 !rounded-full flex justify-center">
+                <div class="w-1 h-3 bg-white/80 !rounded-full mt-2"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 md:py-20 bg-gray-50 relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12 md:mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Biz Kimik</h2>
+                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">2020-ci ildən bəri innovativ rəqəmsal həllər yaradan ehtiraslı dizaynerlər və tərtibatçılar.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center about-grid">
+                <div class="relative fade-in about-image">
+                    <div class="relative overflow-hidden !rounded-xl shadow-xl">
+                        <img 
+                            src="https://readdy.ai/api/search-image?query=modern%20tech%20office%20with%20diverse%20team%20of%20web%20designers%20and%20developers%20working%20together%2C%20creative%20workspace%20with%20multiple%20screens%20showing%20web%20designs%2C%20professional%20environment%20with%20stylish%20interior%2C%20team%20collaboration%20on%20digital%20projects&width=600&height=400&seq=team1&orientation=landscape" 
+                            alt="NovaWeb Team" 
+                            class="w-full h-auto object-cover transition-transform duration-700 hover:scale-105"
+                        >
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6">
+                                <p class="text-white font-medium">Yaradıcı beyinlərdən ibarət komandamız birlikdə işləyir</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute -bottom-6 -right-6 bg-primary text-white p-4 !rounded-lg shadow-lg fade-in">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-10 h-10 flex items-center justify-center bg-white/20 !rounded-full">
+                                <i class="ri-user-smile-line ri-lg"></i>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold" id="client-counter">0</div>
+                                <div class="text-sm">Xoşbəxt Müştərilər</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute -top-6 -left-6 bg-white text-gray-800 p-4 !rounded-lg shadow-lg fade-in">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-10 h-10 flex items-center justify-center bg-primary/10 !rounded-full text-primary">
+                                <i class="ri-award-line ri-lg"></i>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold" id="project-counter">0</div>
+                                <div class="text-sm">Tamamlanmış Layihələr</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fade-in">
+                    <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">Bizim Hekayəmiz</h3>
+                    <p class="text-gray-700 mb-6">NovaWeb 2020-ci ildə yaradılıb və fəaliyyətinə istedadlı dizaynerlərdən ibarət kiçik bir komanda kimi başlayıb. Məqsədimiz – istisna rəqəmsal təcrübələr yaratmaq idi. Bu gün isə NovaWeb dünya üzrə müştəriləri olan tam xidmət göstərən veb dizayn agentliyinə çevrilib.</p>
+
+                    <p class="text-gray-700 mb-8">Bizim yanaşmamız innovativ texnologiyaları yaradıcı dizayn düşüncəsi ilə birləşdirərək, həm vizual baxımdan cəlbedici, həm də yüksək performanslı veb saytlar təqdim etməkdən ibarətdir.</p>
+                    
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 mb-8">
+                        <div class="bg-white p-4 md:p-6 !rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                            <div class="w-10 md:w-12 h-10 md:h-12 flex items-center justify-center bg-primary/10 !rounded-full text-primary mb-3 md:mb-4">
+                                <i class="ri-palette-line ri-lg"></i>
+                            </div>
+                            <h4 class="text-lg md:text-xl font-semibold text-gray-900 mb-2">Yaradıcı Dizayn</h4>
+                            <p class="text-sm md:text-base text-gray-600">Brendinizin ruhunu əks etdirən innovativ dizaynlar</p>
+                        </div>
+                    
+                        <div class="bg-white p-4 md:p-6 !rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                            <div class="w-10 md:w-12 h-10 md:h-12 flex items-center justify-center bg-primary/10 !rounded-full text-primary mb-3 md:mb-4">
+                                <i class="ri-code-s-slash-line ri-lg"></i>
+                            </div>
+                            <h4 class="text-lg md:text-xl font-semibold text-gray-900 mb-2">Təmiz Kod</h4>
+                            <p class="text-sm md:text-base text-gray-600">Səmərəli və asan idarə olunan kodlarla yüksək performans</p>
+                        </div>
+                    
+                        <div class="bg-white p-4 md:p-6 !rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                            <div class="w-10 md:w-12 h-10 md:h-12 flex items-center justify-center bg-primary/10 !rounded-full text-primary mb-3 md:mb-4">
+                                <i class="ri-smartphone-line ri-lg"></i>
+                            </div>
+                            <h4 class="text-lg md:text-xl font-semibold text-gray-900 mb-2">Adaptiv Dizayn</h4>
+                            <p class="text-sm md:text-base text-gray-600">Bütün cihaz və ekran ölçülərində problemsiz istifadə təcrübəsi</p>
+                        </div>
+                    
+                        <div class="bg-white p-4 md:p-6 !rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                            <div class="w-10 md:w-12 h-10 md:h-12 flex items-center justify-center bg-primary/10 !rounded-full text-primary mb-3 md:mb-4">
+                                <i class="ri-speed-line ri-lg"></i>
+                            </div>
+                            <h4 class="text-lg md:text-xl font-semibold text-gray-900 mb-2">Yüksək Performans</h4>
+                            <p class="text-sm md:text-base text-gray-600">Sürət və SEO üçün optimallaşdırılmış ildırım sürətli saytlar</p>
+                        </div>
+                    </div>                    
+                    
+                    <div class="flex flex-wrap gap-3 md:gap-4 items-center">
+                        <div class="flex items-center space-x-2 bg-white px-3 md:px-4 py-1 md:py-2 !rounded-full shadow-sm">
+                            <div class="w-6 md:w-8 h-6 md:h-8 flex items-center justify-center text-primary">
+                                <i class="ri-html5-line ri-lg"></i>
+                            </div>
+                            <span class="text-sm md:text-base font-medium">HTML5</span>
+                        </div>
+                        
+                        <div class="flex items-center space-x-2 bg-white px-3 md:px-4 py-1 md:py-2 !rounded-full shadow-sm">
+                            <div class="w-6 md:w-8 h-6 md:h-8 flex items-center justify-center text-primary">
+                                <i class="ri-css3-line ri-lg"></i>
+                            </div>
+                            <span class="text-sm md:text-base font-medium">CSS3</span>
+                        </div>
+                        
+                        <div class="flex items-center space-x-2 bg-white px-3 md:px-4 py-1 md:py-2 !rounded-full shadow-sm">
+                            <div class="w-6 md:w-8 h-6 md:h-8 flex items-center justify-center text-primary">
+                                <i class="ri-javascript-line ri-lg"></i>
+                            </div>
+                            <span class="text-sm md:text-base font-medium">JavaScript</span>
+                        </div>
+                        
+                        <div class="flex items-center space-x-2 bg-white px-3 md:px-4 py-1 md:py-2 !rounded-full shadow-sm">
+                            <div class="w-6 md:w-8 h-6 md:h-8 flex items-center justify-center text-primary">
+                                <i class="ri-reactjs-line ri-lg"></i>
+                            </div>
+                            <span class="text-sm md:text-base font-medium">React</span>
+                        </div>
+                        
+                        <div class="flex items-center space-x-2 bg-white px-3 md:px-4 py-1 md:py-2 !rounded-full shadow-sm">
+                            <div class="w-6 md:w-8 h-6 md:h-8 flex items-center justify-center text-primary">
+                                <i class="ri-vuejs-line ri-lg"></i>
+                            </div>
+                            <span class="text-sm md:text-base font-medium">Vue</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Floating tech elements -->
+        <div class="hidden md:block">
+            <div class="floating absolute top-20 left-10 w-16 h-16 opacity-10">
+                <i class="ri-html5-line ri-4x text-primary"></i>
+            </div>
+            <div class="floating floating-delay-1 absolute top-40 right-20 w-16 h-16 opacity-10">
+                <i class="ri-css3-line ri-4x text-primary"></i>
+            </div>
+            <div class="floating floating-delay-2 absolute bottom-20 left-1/4 w-16 h-16 opacity-10">
+                <i class="ri-javascript-line ri-4x text-primary"></i>
+            </div>
+            <div class="floating floating-delay-3 absolute bottom-40 right-1/4 w-16 h-16 opacity-10">
+                <i class="ri-reactjs-line ri-4x text-primary"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Works Section -->
+    <section id="works" class="py-16 md:py-20 bg-white relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12 md:mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">İşlərimiz</h2>
+                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">Təcrübəmizi və yaradıcılığımızı nümayiş etdirən innovativ veb layihələr portfelimizi araşdırın.</p>
+            </div>
+            
+            <div class="mb-6 md:mb-8 flex justify-center fade-in">
+                <div class="inline-flex p-1 bg-gray-100 !rounded-full overflow-x-auto">
+                    <button class="work-filter-btn px-4 md:px-6 py-2 !rounded-full bg-primary text-white whitespace-nowrap" data-filter="all">Bütün Layihələr</button>
+                    <button class="work-filter-btn px-4 md:px-6 py-2 !rounded-full text-gray-700 hover:bg-gray-200 whitespace-nowrap" data-filter="web">Veb Dizayn</button>
+                    <button class="work-filter-btn px-4 md:px-6 py-2 !rounded-full text-gray-700 hover:bg-gray-200 whitespace-nowrap" data-filter="ecommerce">Elektron ticarət</button>
+                    <button class="work-filter-btn px-4 md:px-6 py-2 !rounded-full text-gray-700 hover:bg-gray-200 whitespace-nowrap" data-filter="app">Mobil Proqramlar</button>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8" id="works-grid">
+                <!-- Work Item 1 -->
+                <div class="work-item fade-in" data-category="web">
+                    <div class="relative overflow-hidden !rounded-xl shadow-lg group">
+                        <img 
+                            src="https://readdy.ai/api/search-image?query=modern%20responsive%20website%20design%20for%20a%20tech%20company%2C%20showing%20desktop%20and%20mobile%20versions%2C%20clean%20interface%20with%20blue%20and%20white%20color%20scheme%2C%20professional%20web%20design%20with%20modern%20UI%20elements%20and%20clear%20typography&width=600&height=450&seq=work1&orientation=landscape" 
+                            alt="Tech Company Website" 
+                            class="w-full h-48 sm:h-60 md:h-72 object-cover object-top transition-transform duration-500"
+                        >
+                        <div class="work-overlay absolute inset-0 bg-primary/80 flex flex-col justify-end p-4 md:p-6 opacity-0 transition-opacity duration-300">
+                            <h3 class="text-xl md:text-2xl font-bold text-white mb-2">TechVision Website</h3>
+                            <p class="text-sm md:text-base text-white/90 mb-3 md:mb-4">A modern responsive website for a leading tech company with custom animations and interactive elements.</p>
+                            <div class="flex space-x-2 md:space-x-3">
+                                <span class="px-2 md:px-3 py-1 bg-white/20 text-white text-xs md:text-sm !rounded-full">Web Design</span>
+                                <span class="px-2 md:px-3 py-1 bg-white/20 text-white text-xs md:text-sm !rounded-full">UI/UX</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Work Item 2 -->
+                <div class="work-item fade-in" data-category="ecommerce">
+                    <div class="relative overflow-hidden !rounded-xl shadow-lg group">
+                        <img 
+                            src="https://readdy.ai/api/search-image?query=modern%20e-commerce%20website%20design%20showing%20product%20page%20with%20elegant%20layout%2C%20shopping%20cart%20functionality%2C%20clean%20white%20background%20with%20blue%20accents%2C%20professional%20product%20photography%2C%20mobile%20responsive%20design&width=600&height=450&seq=work2&orientation=landscape" 
+                            alt="E-Commerce Platform" 
+                            class="w-full h-48 sm:h-60 md:h-72 object-cover object-top transition-transform duration-500"
+                        >
+                        <div class="work-overlay absolute inset-0 bg-primary/80 flex flex-col justify-end p-4 md:p-6 opacity-0 transition-opacity duration-300">
+                            <h3 class="text-xl md:text-2xl font-bold text-white mb-2">LuxeShop E-Commerce</h3>
+                            <p class="text-sm md:text-base text-white/90 mb-3 md:mb-4">A premium e-commerce platform with seamless checkout process and personalized product recommendations.</p>
+                            <div class="flex space-x-2 md:space-x-3">
+                                <span class="px-2 md:px-3 py-1 bg-white/20 text-white text-xs md:text-sm !rounded-full">E-Commerce</span>
+                                <span class="px-2 md:px-3 py-1 bg-white/20 text-white text-xs md:text-sm !rounded-full">UX Design</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Work Item 3 -->
+                <div class="work-item fade-in" data-category="app">
+                    <div class="relative overflow-hidden !rounded-xl shadow-lg group">
+                        <img 
+                            src="https://readdy.ai/api/search-image?query=mobile%20app%20interface%20design%20showing%20multiple%20screens%20of%20a%20fitness%20tracking%20application%2C%20clean%20UI%20with%20blue%20and%20white%20color%20scheme%2C%20showing%20data%20visualization%2C%20user%20profile%20and%20workout%20tracking%20features&width=600&height=450&seq=work3&orientation=landscape" 
+                            alt="Fitness App" 
+                            class="w-full h-48 sm:h-60 md:h-72 object-cover object-top transition-transform duration-500"
+                        >
+                        <div class="work-overlay absolute inset-0 bg-primary/80 flex flex-col justify-end p-4 md:p-6 opacity-0 transition-opacity duration-300">
+                            <h3 class="text-xl md:text-2xl font-bold text-white mb-2">FitTrack Mobile App</h3>
+                            <p class="text-sm md:text-base text-white/90 mb-3 md:mb-4">A fitness tracking mobile application with personalized workout plans and progress analytics.</p>
+                            <div class="flex space-x-2 md:space-x-3">
+                                <span class="px-2 md:px-3 py-1 bg-white/20 text-white text-xs md:text-sm !rounded-full">Mobile App</span>
+                                <span class="px-2 md:px-3 py-1 bg-white/20 text-white text-xs md:text-sm !rounded-full">UI Design</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Work Item 4 -->
+                <div class="work-item fade-in" data-category="web">
+                    <div class="relative overflow-hidden !rounded-xl shadow-lg group">
+                        <img 
+                            src="https://readdy.ai/api/search-image?query=professional%20corporate%20website%20design%20for%20a%20financial%20services%20company%2C%20showing%20homepage%20with%20elegant%20layout%2C%20data%20visualization%2C%20clean%20white%20and%20blue%20color%20scheme%2C%20modern%20UI%20with%20clear%20information%20hierarchy&width=600&height=450&seq=work4&orientation=landscape" 
+                            alt="Financial Website" 
+                            class="w-full h-48 sm:h-60 md:h-72 object-cover object-top transition-transform duration-500"
+                        >
+                        <div class="work-overlay absolute inset-0 bg-primary/80 flex flex-col justify-end p-4 md:p-6 opacity-0 transition-opacity duration-300">
+                            <h3 class="text-xl md:text-2xl font-bold text-white mb-2">FinServe Corporate Site</h3>
+                            <p class="text-sm md:text-base text-white/90 mb-3 md:mb-4">A professional website for a financial services firm with interactive data visualization and secure client portal.</p>
+                            <div class="flex space-x-2 md:space-x-3">
+                                <span class="px-2 md:px-3 py-1 bg-white/20 text-white text-xs md:text-sm !rounded-full">Web Design</span>
+                                <span class="px-2 md:px-3 py-1 bg-white/20 text-white text-xs md:text-sm !rounded-full">Corporate</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Work Item 5 -->
+                <div class="work-item fade-in" data-category="ecommerce">
+                    <div class="relative overflow-hidden !rounded-xl shadow-lg group">
+                        <img 
+                            src="https://readdy.ai/api/search-image?query=food%20delivery%20app%20and%20website%20interface%20design%20showing%20restaurant%20listings%2C%20menu%20items%2C%20order%20tracking%2C%20clean%20modern%20UI%20with%20appetizing%20food%20photography%2C%20blue%20accent%20colors%20on%20white%20background&width=600&height=450&seq=work5&orientation=landscape" 
+                            alt="Food Delivery Platform" 
+                            class="w-full h-48 sm:h-60 md:h-72 object-cover object-top transition-transform duration-500"
+                        >
+                        <div class="work-overlay absolute inset-0 bg-primary/80 flex flex-col justify-end p-4 md:p-6 opacity-0 transition-opacity duration-300">
+                            <h3 class="text-xl md:text-2xl font-bold text-white mb-2">TastyBites Food Platform</h3>
+                            <p class="text-sm md:text-base text-white/90 mb-3 md:mb-4">A food delivery platform with real-time order tracking and personalized restaurant recommendations.</p>
+                            <div class="flex space-x-2 md:space-x-3">
+                                <span class="px-2 md:px-3 py-1 bg-white/20 text-white text-xs md:text-sm !rounded-full">E-Commerce</span>
+                                <span class="px-2 md:px-3 py-1 bg-white/20 text-white text-xs md:text-sm !rounded-full">App Design</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Work Item 6 -->
+                <div class="work-item fade-in" data-category="app">
+                    <div class="relative overflow-hidden !rounded-xl shadow-lg group">
+                        <img 
+                            src="https://readdy.ai/api/search-image?query=travel%20booking%20application%20interface%20design%20showing%20destination%20search%2C%20hotel%20listings%2C%20flight%20booking%20screens%2C%20clean%20modern%20UI%20with%20beautiful%20travel%20photography%2C%20blue%20and%20white%20color%20scheme&width=600&height=450&seq=work6&orientation=landscape" 
+                            alt="Travel App" 
+                            class="w-full h-48 sm:h-60 md:h-72 object-cover object-top transition-transform duration-500"
+                        >
+                        <div class="work-overlay absolute inset-0 bg-primary/80 flex flex-col justify-end p-4 md:p-6 opacity-0 transition-opacity duration-300">
+                            <h3 class="text-xl md:text-2xl font-bold text-white mb-2">Wanderlust Travel App</h3>
+                            <p class="text-sm md:text-base text-white/90 mb-3 md:mb-4">A comprehensive travel booking application with personalized itineraries and local experience recommendations.</p>
+                            <div class="flex space-x-2 md:space-x-3">
+                                <span class="px-2 md:px-3 py-1 bg-white/20 text-white text-xs md:text-sm !rounded-full">Mobile App</span>
+                                <span class="px-2 md:px-3 py-1 bg-white/20 text-white text-xs md:text-sm !rounded-full">UX Design</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-8 md:mt-12 fade-in">
+                <a href="#contact" class="inline-flex items-center px-6 md:px-8 py-3 bg-primary text-white !rounded-button hover:bg-primary/90 transition-all transform hover:-translate-y-1 whitespace-nowrap">
+                    <span>Layihənizə başlayın</span>
+                    <i class="ri-arrow-right-line ri-lg ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="py-16 md:py-20 bg-gray-50 relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12 md:mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Ekspertiza və Sertifikatlarımız</h2>
+                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">Peşəkar nailiyyətlərimiz və sənayedə tanınmamızla fəxr edirik.</p>
+            </div>
+            
+            <div class="mb-12 md:mb-16 fade-in">
+                <div class="flex justify-center mb-8 md:mb-10">
+                    <div class="flex items-center space-x-3 md:space-x-4 bg-white px-6 md:px-8 py-3 md:py-4 !rounded-xl shadow-md">
+                        <div class="w-12 md:w-16 h-12 md:h-16 flex items-center justify-center bg-primary/10 !rounded-full text-primary">
+                            <i class="ri-calendar-line ri-xl md:ri-2x"></i>
+                        </div>
+                        <div>
+                            <div class="text-3xl md:text-4xl font-bold text-gray-900" id="experience-counter">0</div>
+                            <div class="text-gray-600">İllərin Təcrübəsi</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+                    <div class="bg-white p-4 md:p-6 !rounded-xl shadow-sm hover:shadow-md transition-shadow text-center">
+                        <div class="w-12 md:w-16 h-12 md:h-16 mx-auto flex items-center justify-center bg-primary/10 !rounded-full text-primary mb-3 md:mb-4">
+                            <i class="ri-award-line ri-xl md:ri-2x"></i>
+                        </div>
+                        <h4 class="text-lg md:text-xl font-semibold text-gray-900 mb-2">Google Partners</h4>
+                        <p class="text-gray-600">Sertifikatlı Tərəfdaş</p>
+                    </div>
+                    
+                    <div class="bg-white p-4 md:p-6 !rounded-xl shadow-sm hover:shadow-md transition-shadow text-center">
+                        <div class="w-12 md:w-16 h-12 md:h-16 mx-auto flex items-center justify-center bg-primary/10 !rounded-full text-primary mb-3 md:mb-4">
+                            <i class="ri-microsoft-line ri-xl md:ri-2x"></i>
+                        </div>
+                        <h4 class="text-lg md:text-xl font-semibold text-gray-900 mb-2">Microsoft</h4>
+                        <p class="text-gray-600">Həll Təchizatçı</p>
+                    </div>
+                    
+                    <div class="bg-white p-4 md:p-6 !rounded-xl shadow-sm hover:shadow-md transition-shadow text-center">
+                        <div class="w-12 md:w-16 h-12 md:h-16 mx-auto flex items-center justify-center bg-primary/10 !rounded-full text-primary mb-3 md:mb-4">
+                            <i class="ri-amazon-line ri-xl md:ri-2x"></i>
+                        </div>
+                        <h4 class="text-lg md:text-xl font-semibold text-gray-900 mb-2">AWS</h4>
+                        <p class="text-gray-600">Sertifikatlı Developer</p>
+                    </div>
+                    
+                    <div class="bg-white p-4 md:p-6 !rounded-xl shadow-sm hover:shadow-md transition-shadow text-center">
+                        <div class="w-12 md:w-16 h-12 md:h-16 mx-auto flex items-center justify-center bg-primary/10 !rounded-full text-primary mb-3 md:mb-4">
+                            <i class="ri-adobe-line ri-xl md:ri-2x"></i>
+                        </div>
+                        <h4 class="text-lg md:text-xl font-semibold text-gray-900 mb-2">Adobe</h4>
+                        <p class="text-gray-600">Yaradıcı tərəfdaş</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="fade-in">
+                <h3 class="text-xl md:text-2xl font-bold text-gray-900 text-center mb-6 md:mb-8">Yol Xəritəmiz</h3>
+                
+                <div class="relative">
+                    <!-- Timeline line -->
+                    <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-primary/20 hidden md:block"></div>
+                    
+                    <!-- Timeline items -->
+                    <div class="timeline-container">
+                        <!-- Item 1 -->
+                        <div class="relative flex flex-col md:flex-row justify-between items-center mb-12 md:mb-16 fade-in">
+                            <div class="w-full md:w-5/12 md:pr-8 md:text-right mb-4 md:mb-0">
+                                <h4 class="text-lg md:text-xl font-semibold text-gray-900 mb-2">NovaWeb Təsis Edilməsi</h4>
+                                <p class="text-gray-600 mb-2">2 ehtiraslı dizaynerdən ibarət kiçik bir komanda ilə başladı</p>
+                                <div class="text-primary font-medium">2020</div>
+                            </div>
+                            
+                            <div class="absolute left-1/2 transform -translate-x-1/2 w-10 md:w-12 h-10 md:h-12 bg-primary text-white !rounded-full flex items-center justify-center z-10 my-4 md:my-0">
+                                <i class="ri-flag-line ri-lg"></i>
+                            </div>
+                            
+                            <div class="w-full md:w-5/12 md:pl-8">
+                                <img 
+                                    src="https://readdy.ai/api/search-image?query=small%20office%20workspace%20with%20three%20people%20working%20on%20computer%20designs%2C%20creative%20startup%20environment%2C%20cozy%20modern%20office%20space&width=300&height=200&seq=timeline1&orientation=landscape" 
+                                    alt="Founding Team" 
+                                    class="w-full h-auto !rounded-lg shadow-md"
+                                >
+                            </div>
+                        </div>
+                        
+                        <!-- Item 2 -->
+                        <div class="relative flex flex-col md:flex-row justify-between items-center mb-12 md:mb-16 fade-in">
+                            <div class="w-full md:w-5/12 md:pr-8 order-1 md:order-none">
+                                <img 
+                                    src="https://readdy.ai/api/search-image?query=business%20award%20ceremony%2C%20people%20receiving%20trophy%20on%20stage%2C%20professional%20event%20with%20audience&width=300&height=200&seq=timeline2&orientation=landscape" 
+                                    alt="First Award" 
+                                    class="w-full h-auto !rounded-lg shadow-md"
+                                >
+                            </div>
+                            
+                            <div class="absolute left-1/2 transform -translate-x-1/2 w-10 md:w-12 h-10 md:h-12 bg-primary text-white !rounded-full flex items-center justify-center z-10 my-4 md:my-0">
+                                <i class="ri-award-line ri-lg"></i>
+                            </div>
+                            
+                            <div class="w-full md:w-5/12 md:pl-8 order-2 md:order-none">
+                                <h4 class="text-lg md:text-xl font-semibold text-gray-900 mb-2">İlk işimiz</h4>
+                                <p class="text-gray-600 mb-2">Canary Travel səyahət şirkəti ilə əməkdaşlıq </p>
+                                <div class="text-primary font-medium">2021</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Item 3 -->
+                        <div class="relative flex flex-col md:flex-row justify-between items-center mb-12 md:mb-16 fade-in">
+                            <div class="w-full md:w-5/12 md:pr-8 md:text-right mb-4 md:mb-0">
+                                <h4 class="text-lg md:text-xl font-semibold text-gray-900 mb-2">SMM İşçisi</h4>
+                                <p class="text-gray-600 mb-2">Abdullayev İsmayıl ilə razılıq</p>
+                                <div class="text-primary font-medium">2023</div>
+                            </div>
+                            
+                            <div class="absolute left-1/2 transform -translate-x-1/2 w-10 md:w-12 h-10 md:h-12 bg-primary text-white !rounded-full flex items-center justify-center z-10 my-4 md:my-0">
+                                <i class="ri-global-line ri-lg"></i>
+                            </div>
+                            
+                            <div class="w-full md:w-5/12 md:pl-8">
+                                <img 
+                                    src="https://readdy.ai/api/search-image?query=modern%20office%20in%20London%20with%20view%20of%20London%20skyline%2C%20professional%20tech%20company%20workspace%2C%20stylish%20interior%20design&width=300&height=200&seq=timeline3&orientation=landscape" 
+                                    alt="London Office" 
+                                    class="w-full h-auto !rounded-lg shadow-md"
+                                >
+                            </div>
+                        </div>
+                        
+                        <!-- Item 4 -->
+                        <div class="relative flex flex-col md:flex-row justify-between items-center fade-in">
+                            <div class="w-full md:w-5/12 md:pr-8 order-1 md:order-none">
+                                <img 
+                                    src="https://readdy.ai/api/search-image?query=diverse%20team%20of%20web%20designers%20and%20developers%20in%20modern%20office%20space%2C%20collaborative%20environment%20with%20multiple%20screens%2C%20professional%20tech%20company&width=300&height=200&seq=timeline4&orientation=landscape" 
+                                    alt="Current Team" 
+                                    class="w-full h-auto !rounded-lg shadow-md"
+                                >
+                            </div>
+                            
+                            <div class="absolute left-1/2 transform -translate-x-1/2 w-10 md:w-12 h-10 md:h-12 bg-primary text-white !rounded-full flex items-center justify-center z-10 my-4 md:my-0">
+                                <i class="ri-team-line ri-lg"></i>
+                            </div>
+                            
+                            <div class="w-full md:w-5/12 md:pl-8 order-2 md:order-none">
+                                <h4 class="text-lg md:text-xl font-semibold text-gray-900 mb-2">Bu gün</h4>
+                                <p class="text-gray-600 mb-2">10+ peşəkar heyət</p>
+                                <div class="text-primary font-medium">2025</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- <section id="blog" class="py-16 md:py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12 md:mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Latest Insights</h2>
+                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">Stay updated with our latest thoughts on design, development, and digital trends.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <div class="blog-card bg-white !rounded-xl shadow-md overflow-hidden fade-in">
+                    <div class="relative h-48 sm:h-60 overflow-hidden">
+                        <img 
+                            src="https://readdy.ai/api/search-image?query=modern%20web%20design%20trends%20visualization%2C%20UI%20UX%20design%20elements%2C%20creative%20digital%20interface%20components%2C%20professional%20web%20design%20concept&width=600&height=400&seq=blog1&orientation=landscape" 
+                            alt="Web Design Trends" 
+                            class="w-full h-full object-cover object-top"
+                        >
+                        <div class="absolute top-3 md:top-4 left-3 md:left-4">
+                            <span class="px-2 md:px-3 py-1 bg-primary text-white text-xs md:text-sm !rounded-full">Design</span>
+                        </div>
+                    </div>
+                    
+                    <div class="p-4 md:p-6">
+                        <div class="flex items-center text-gray-500 text-xs md:text-sm mb-2 md:mb-3">
+                            <div class="flex items-center mr-3 md:mr-4">
+                                <i class="ri-calendar-line mr-1"></i>
+                                <span>June 8, 2025</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="ri-time-line mr-1"></i>
+                                <span>5 min read</span>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3">Top Web Design Trends to Watch in 2025</h3>
+                        <p class="text-sm md:text-base text-gray-600 mb-3 md:mb-4">Explore the cutting-edge design trends that are shaping the digital landscape this year, from 3D elements to micro-interactions.</p>
+                        
+                        <a href="/blog" class="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-colors text-sm md:text-base">
+                            <span>Read Article</span>
+                            <i class="ri-arrow-right-line ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="blog-card bg-white !rounded-xl shadow-md overflow-hidden fade-in">
+                    <div class="relative h-48 sm:h-60 overflow-hidden">
+                        <img 
+                            src="https://readdy.ai/api/search-image?query=website%20performance%20optimization%20visualization%2C%20speed%20metrics%2C%20loading%20time%20charts%2C%20technical%20web%20development%20concept&width=600&height=400&seq=blog2&orientation=landscape" 
+                            alt="Performance Optimization" 
+                            class="w-full h-full object-cover object-top"
+                        >
+                        <div class="absolute top-3 md:top-4 left-3 md:left-4">
+                            <span class="px-2 md:px-3 py-1 bg-primary text-white text-xs md:text-sm !rounded-full">Development</span>
+                        </div>
+                    </div>
+                    
+                    <div class="p-4 md:p-6">
+                        <div class="flex items-center text-gray-500 text-xs md:text-sm mb-2 md:mb-3">
+                            <div class="flex items-center mr-3 md:mr-4">
+                                <i class="ri-calendar-line mr-1"></i>
+                                <span>May 24, 2025</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="ri-time-line mr-1"></i>
+                                <span>7 min read</span>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3">Optimizing Website Performance for Better User Experience</h3>
+                        <p class="text-sm md:text-base text-gray-600 mb-3 md:mb-4">Learn how to improve your website's loading speed and overall performance to enhance user satisfaction and conversion rates.</p>
+                        
+                        <a href="/blog" class="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-colors text-sm md:text-base">
+                            <span>Read Article</span>
+                            <i class="ri-arrow-right-line ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="blog-card bg-white !rounded-xl shadow-md overflow-hidden fade-in">
+                    <div class="relative h-48 sm:h-60 overflow-hidden">
+                        <img 
+                            src="https://readdy.ai/api/search-image?query=AI%20in%20web%20design%20concept%2C%20artificial%20intelligence%20creating%20website%20layouts%2C%20futuristic%20technology%20enhancing%20digital%20design%20process&width=600&height=400&seq=blog3&orientation=landscape" 
+                            alt="AI in Web Design" 
+                            class="w-full h-full object-cover object-top"
+                        >
+                        <div class="absolute top-3 md:top-4 left-3 md:left-4">
+                            <span class="px-2 md:px-3 py-1 bg-primary text-white text-xs md:text-sm !rounded-full">Technology</span>
+                        </div>
+                    </div>
+                    
+                    <div class="p-4 md:p-6">
+                        <div class="flex items-center text-gray-500 text-xs md:text-sm mb-2 md:mb-3">
+                            <div class="flex items-center mr-3 md:mr-4">
+                                <i class="ri-calendar-line mr-1"></i>
+                                <span>May 12, 2025</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="ri-time-line mr-1"></i>
+                                <span>6 min read</span>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3">How AI is Revolutionizing Web Design and Development</h3>
+                        <p class="text-sm md:text-base text-gray-600 mb-3 md:mb-4">Discover how artificial intelligence is transforming the web design industry, from automated layouts to personalized user experiences.</p>
+                        
+                        <a href="/blog" class="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-colors text-sm md:text-base">
+                            <span>Read Article</span>
+                            <i class="ri-arrow-right-line ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-8 md:mt-12 fade-in">
+                <a href="/blog" class="inline-flex items-center px-6 md:px-8 py-3 bg-white border border-primary text-primary !rounded-button hover:bg-primary/5 transition-colors whitespace-nowrap">
+                    <span>View All Articles</span>
+                    <i class="ri-arrow-right-line ri-lg ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 md:py-20 bg-gray-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-10 left-10 text-4xl md:text-6xl">
+                <i class="ri-code-s-slash-line"></i>
+            </div>
+            <div class="absolute top-40 right-20 text-3xl md:text-5xl">
+                <i class="ri-layout-line"></i>
+            </div>
+            <div class="absolute bottom-20 left-1/4 text-5xl md:text-7xl">
+                <i class="ri-html5-line"></i>
+            </div>
+            <div class="absolute bottom-40 right-1/4 text-4xl md:text-6xl">
+                <i class="ri-css3-line"></i>
+            </div>
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-12 md:mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Əlaqə saxlayın</h2>
+                <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">Növbəti layihənizə başlamağa hazırsınız? Pulsuz konsultasiya üçün bu gün bizimlə əlaqə saxlayın.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
+                <div class="fade-in">
+                    <form id="contact-form" class="space-y-4 md:space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                            <div class="relative">
+                                <input type="text" id="name" class="w-full bg-gray-800 border-none !rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:ring-2 focus:ring-primary/50" placeholder="Adınız" required>
+                                <label for="name" class="sr-only">Adınız</label>
+                            </div>
+                            
+                            <div class="relative">
+                                <input type="email" id="email" class="w-full bg-gray-800 border-none !rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:ring-2 focus:ring-primary/50" placeholder="Emailiniz" required>
+                                <label for="email" class="sr-only">Emailiniz</label>
+                            </div>
+                        </div>
+                        
+                        <div class="relative">
+                            <input type="text" id="subject" class="w-full bg-gray-800 border-none !rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:ring-2 focus:ring-primary/50" placeholder="Mövzu" required>
+                            <label for="subject" class="sr-only">Mövzu</label>
+                        </div>
+                        
+                        <div class="relative">
+                            <textarea id="message" rows="5" class="w-full bg-gray-800 border-none !rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:ring-2 focus:ring-primary/50" placeholder="Mesajınız" required></textarea>
+                            <label for="message" class="sr-only">Mesajınız</label>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <label class="custom-checkbox text-gray-300 text-sm md:text-base">
+                                <input type="checkbox" required>
+                                <span class="checkmark"></span>
+                                Mən məxfilik siyasəti və xidmət şərtləri ilə razıyam
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="w-full px-6 md:px-8 py-3 bg-primary text-white !rounded-button hover:bg-primary/90 transition-all transform hover:-translate-y-1 whitespace-nowrap">
+                            <span>Göndər</span>
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="space-y-6 md:space-y-8 fade-in">
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-4 md:mb-6">Əlaqə məlumatı</h3>
+                        
+                        <div class="space-y-3 md:space-y-4">
+                            <div class="flex items-start">
+                                <div class="w-10 md:w-12 h-10 md:h-12 flex items-center justify-center bg-primary/20 !rounded-full text-primary mr-3 md:mr-4">
+                                    <i class="ri-map-pin-line ri-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium mb-1">Məkanımız</h4>
+                                    <p class="text-sm md:text-base text-gray-300">Koroğlu Rəhimov 70, Bakı, Azərbaycan</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-10 md:w-12 h-10 md:h-12 flex items-center justify-center bg-primary/20 !rounded-full text-primary mr-3 md:mr-4">
+                                    <i class="ri-mail-line ri-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium mb-1">Bizə e-poçt göndərin</h4>
+                                    <p class="text-sm md:text-base text-gray-300">info@nnovaweb.com</p>
+                                    <p class="text-sm md:text-base text-gray-300">support@novaweb.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-10 md:w-12 h-10 md:h-12 flex items-center justify-center bg-primary/20 !rounded-full text-primary mr-3 md:mr-4">
+                                    <i class="ri-phone-line ri-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium mb-1">Bizə Zəng Edin</h4>
+                                    <p class="text-sm md:text-base text-gray-300">+994 (99) 224-12-88</p>
+                                    <p class="text-sm md:text-base text-gray-300">+994 (55) 364-02-88</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-4 md:mb-6">Bizi İzləyin</h3>
+                        
+                        <div class="flex space-x-3 md:space-x-4">
+                            <a href="#" class="w-10 md:w-12 h-10 md:h-12 flex items-center justify-center bg-gray-800 !rounded-full hover:bg-primary transition-colors">
+                                <i class="ri-facebook-fill ri-lg"></i>
+                            </a>
+                            <a href="#" class="w-10 md:w-12 h-10 md:h-12 flex items-center justify-center bg-gray-800 !rounded-full hover:bg-primary transition-colors">
+                                <i class="ri-twitter-x-fill ri-lg"></i>
+                            </a>
+                            <a href="#" class="w-10 md:w-12 h-10 md:h-12 flex items-center justify-center bg-gray-800 !rounded-full hover:bg-primary transition-colors">
+                                <i class="ri-instagram-line ri-lg"></i>
+                            </a>
+                            <a href="#" class="w-10 md:w-12 h-10 md:h-12 flex items-center justify-center bg-gray-800 !rounded-full hover:bg-primary transition-colors">
+                                <i class="ri-linkedin-fill ri-lg"></i>
+                            </a>
+                            <a href="#" class="w-10 md:w-12 h-10 md:h-12 flex items-center justify-center bg-gray-800 !rounded-full hover:bg-primary transition-colors">
+                                <i class="ri-dribbble-line ri-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-4 md:mb-6">Məkanımız</h3>
+                        <div class="w-full h-48 md:h-64 !rounded-xl overflow-hidden" style="background-image: url('https://public.readdy.ai/gen_page/map_placeholder_1280x720.png'); background-size: cover; background-position: center;"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 md:mt-20 pt-8 md:pt-12 border-t border-gray-800 fade-in">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center">
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4">Bülletenimizə Abunə olun</h3>
+                        <p class="text-sm md:text-base text-gray-300 mb-4 md:mb-6">Ən son xəbərlərimiz, məqalələrimiz və xüsusi təkliflərimizdən xəbərdar olun.</p>
+                        
+                        <form class="flex flex-wrap md:flex-nowrap gap-3 md:gap-4">
+                            <input type="email" class="flex-grow bg-gray-800 border-none !rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:ring-2 focus:ring-primary/50" placeholder="Emailiniz" required>
+                            <button type="submit" class="px-6 py-3 bg-primary text-white !rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap">Abunə olun</button>
+                        </form>
+                    </div>
+                    
+                    <div class="flex flex-wrap justify-center md:justify-end gap-3 md:gap-6">
+                        <div class="flex items-center">
+                            <div class="w-8 md:w-10 h-8 md:h-10 flex items-center justify-center text-primary mr-2">
+                                <i class="ri-visa-fill ri-xl"></i>
+                            </div>
+                            <span class="text-sm md:text-base">Visa</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-8 md:w-10 h-8 md:h-10 flex items-center justify-center text-primary mr-2">
+                                <i class="ri-mastercard-fill ri-xl"></i>
+                            </div>
+                            <span class="text-sm md:text-base">Mastercard</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-950 text-white py-8 md:py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+                <div>
+                    <a href="#home" class="font-['Pacifico'] text-2xl md:text-3xl text-primary inline-block mb-4 md:mb-6">NovaWeb</a>
+                    <p class="text-sm md:text-base text-gray-400 mb-4 md:mb-6">Yenilikçi dizayn və inkişaf həlləri vasitəsilə müstəsna rəqəmsal təcrübələr yaratmaq.</p>
+                    <div class="flex space-x-3 md:space-x-4">
+                        <a href="https://www.instagram.com/novaweb_az/" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="ri-instagram-fill ri-lg"></i>
+                        </a>
+                        <a href="https://www.whatsapp.com/catalog/994992241288/?app_absent=0" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="ri-whatsapp-x-fill ri-lg"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/%C3%BClvi-abbasl%C4%B1-59b4682a8/" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="ri-linkedin-fill ri-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg md:text-xl font-bold mb-4 md:mb-6">Sürətli Linklər</h4>
+                    <ul class="space-y-2 md:space-y-3">
+                        <li><a href="#home" class="text-sm md:text-base text-gray-400 hover:text-primary transition-colors">Ana səhifə</a></li>
+                        <li><a href="#about" class="text-sm md:text-base text-gray-400 hover:text-primary transition-colors">Haqqımızda</a></li>
+                        <li><a href="#works" class="text-sm md:text-base text-gray-400 hover:text-primary transition-colors">İşlərimiz</a></li>
+                        <li><a href="#certifications" class="text-sm md:text-base text-gray-400 hover:text-primary transition-colors">Sertifikasiyalar</a></li>
+                        <li><a href="#blog" class="text-sm md:text-base text-gray-400 hover:text-primary transition-colors">Blog</a></li>
+                        <li><a href="#contact" class="text-sm md:text-base text-gray-400 hover:text-primary transition-colors">Əlaqə</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg md:text-xl font-bold mb-4 md:mb-6">Our Services</h4>
+                    <ul class="space-y-2 md:space-y-3">
+                        <li><a href="#" class="text-sm md:text-base text-gray-400 hover:text-primary transition-colors">Veb Dizayn</a></li>
+                        <li><a href="#" class="text-sm md:text-base text-gray-400 hover:text-primary transition-colors">Veb İnkişafı</a></li>
+                        <li><a href="#" class="text-sm md:text-base text-gray-400 hover:text-primary transition-colors">Elektron Ticarət Həlləri</a></li>
+                        <li><a href="#" class="text-sm md:text-base text-gray-400 hover:text-primary transition-colors">Mobil Proqram İnkişafı</a></li>
+                        <li><a href="#" class="text-sm md:text-base text-gray-400 hover:text-primary transition-colors">UI/UX Dizayn</a></li>
+                        <li><a href="#" class="text-sm md:text-base text-gray-400 hover:text-primary transition-colors">Rəqəmsal Marketinq</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg md:text-xl font-bold mb-4 md:mb-6">Əlaqə məlumatı</h4>
+                    <ul class="space-y-3 md:space-y-4">
+                        <li class="flex items-start">
+                            <div class="w-4 md:w-5 h-4 md:h-5 flex items-center justify-center text-primary mr-2 md:mr-3 mt-1">
+                                <i class="ri-map-pin-line"></i>
+                            </div>
+                            <span class="text-sm md:text-base text-gray-400">Koroğlu Rəhimov 70, Bakı, Azərbaycan</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-4 md:w-5 h-4 md:h-5 flex items-center justify-center text-primary mr-2 md:mr-3 mt-1">
+                                <i class="ri-mail-line"></i>
+                            </div>
+                            <span class="text-sm md:text-base text-gray-400">info@novaweb.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-4 md:w-5 h-4 md:h-5 flex items-center justify-center text-primary mr-2 md:mr-3 mt-1">
+                                <i class="ri-phone-line"></i>
+                            </div>
+                            <span class="text-sm md:text-base text-gray-400">+994 (99) 224-12-88</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-4 md:w-5 h-4 md:h-5 flex items-center justify-center text-primary mr-2 md:mr-3 mt-1">
+                                <i class="ri-phone-line"></i>
+                            </div>
+                            <span class="text-sm md:text-base text-gray-400">+994 (55) 364-02-88</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-4 md:w-5 h-4 md:h-5 flex items-center justify-center text-primary mr-2 md:mr-3 mt-1">
+                                <i class="ri-time-line"></i>
+                            </div>
+                            <span class="text-sm md:text-base text-gray-400">7/24</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-8 md:mt-12 pt-6 md:pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-xs md:text-sm text-gray-400 text-center md:text-left mb-3 md:mb-0">© 2025 NovaWeb. All rights reserved.</p>
+                
+                <div class="flex flex-wrap justify-center gap-3 md:gap-4">
+                    <a href="#" class="text-xs md:text-sm text-gray-400 hover:text-primary transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-xs md:text-sm text-gray-400 hover:text-primary transition-colors">Terms of Service</a>
+                    <a href="#" class="text-xs md:text-sm text-gray-400 hover:text-primary transition-colors">Cookie Policy</a>
+                    <a href="#" class="text-xs md:text-sm text-gray-400 hover:text-primary transition-colors">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-6 md:bottom-8 right-6 md:right-8 w-10 md:w-12 h-10 md:h-12 bg-primary text-white !rounded-full flex items-center justify-center shadow-lg transform translate-y-20 opacity-0 transition-all duration-300 z-50">
+        <i class="ri-arrow-up-line ri-lg"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script id="navigation-script">
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('translate-x-0');
+                
+                if (mobileMenu.classList.contains('translate-x-0')) {
+                    menuIcon.classList.remove('ri-menu-line');
+                    menuIcon.classList.add('ri-close-line');
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    menuIcon.classList.remove('ri-close-line');
+                    menuIcon.classList.add('ri-menu-line');
+                    document.body.style.overflow = '';
+                }
+            });
+            
+            // Close mobile menu when clicking on a link
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('translate-x-0');
+                    menuIcon.classList.remove('ri-close-line');
+                    menuIcon.classList.add('ri-menu-line');
+                    document.body.style.overflow = '';
+                });
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        const headerOffset = 80;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script id="animations-script">
+        document.addEventListener('DOMContentLoaded', function() {
+            // Typing animation
+            const typingElement = document.getElementById('typing-text');
+            const phrases = ['Rəqəmsal Təcrübələrin Yaradılması', 'İnnovativ veb saytların qurulması', 'Çarpıcı Dizaynların Yaradılması', 'Fərdi Həllərin İnkişafı'];
+            let phraseIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            let typingSpeed = 100;
+            
+            function typeText() {
+                const currentPhrase = phrases[phraseIndex];
+                
+                if (isDeleting) {
+                    typingElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                    charIndex--;
+                    typingSpeed = 50;
+                } else {
+                    typingElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                    charIndex++;
+                    typingSpeed = 100;
+                }
+                
+                if (!isDeleting && charIndex === currentPhrase.length) {
+                    isDeleting = true;
+                    typingSpeed = 1500; // Pause at end of phrase
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
+                    typingSpeed = 500; // Pause before typing next phrase
+                }
+                
+                setTimeout(typeText, typingSpeed);
+            }
+            
+            typeText();
+            
+            // Fade-in animations on scroll
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            function checkFade() {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.classList.add('visible');
+                    }
+                });
+            }
+            
+            // Initial check
+            checkFade();
+            
+            // Check on scroll
+            window.addEventListener('scroll', checkFade);
+            
+            // Back to top button
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            function toggleBackToTopButton() {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.remove('translate-y-20', 'opacity-0');
+                    backToTopButton.classList.add('translate-y-0', 'opacity-100');
+                } else {
+                    backToTopButton.classList.remove('translate-y-0', 'opacity-100');
+                    backToTopButton.classList.add('translate-y-20', 'opacity-0');
+                }
+            }
+            
+            window.addEventListener('scroll', toggleBackToTopButton);
+            
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Custom cursor
+            const cursor = document.querySelector('.custom-cursor');
+            
+            if (cursor) {
+                document.addEventListener('mousemove', function(e) {
+                    cursor.style.left = e.clientX + 'px';
+                    cursor.style.top = e.clientY + 'px';
+                });
+                
+                document.addEventListener('mousedown', function() {
+                    cursor.style.width = '15px';
+                    cursor.style.height = '15px';
+                    cursor.style.backgroundColor = 'rgba(99, 102, 241, 0.8)';
+                });
+                
+                document.addEventListener('mouseup', function() {
+                    cursor.style.width = '20px';
+                    cursor.style.height = '20px';
+                    cursor.style.backgroundColor = 'rgba(99, 102, 241, 0.5)';
+                });
+                
+                // Enlarge cursor on hover over links and buttons
+                const interactiveElements = document.querySelectorAll('a, button, input, textarea, .work-item');
+                
+                interactiveElements.forEach(element => {
+                    element.addEventListener('mouseenter', function() {
+                        cursor.style.width = '30px';
+                        cursor.style.height = '30px';
+                        cursor.style.backgroundColor = 'rgba(99, 102, 241, 0.3)';
+                    });
+                    
+                    element.addEventListener('mouseleave', function() {
+                        cursor.style.width = '20px';
+                        cursor.style.height = '20px';
+                        cursor.style.backgroundColor = 'rgba(99, 102, 241, 0.5)';
+                    });
+                });
+            }
+            
+            // Create particles
+            const heroSection = document.getElementById('home');
+            
+            function createParticles() {
+                for (let i = 0; i < 30; i++) {
+                    const particle = document.createElement('div');
+                    particle.classList.add('particle');
+                    
+                    const size = Math.random() * 5 + 2;
+                    particle.style.width = `${size}px`;
+                    particle.style.height = `${size}px`;
+                    
+                    const xPos = Math.random() * 100;
+                    const yPos = Math.random() * 100;
+                    particle.style.left = `${xPos}%`;
+                    particle.style.top = `${yPos}%`;
+                    
+                    const duration = Math.random() * 20 + 10;
+                    const delay = Math.random() * 5;
+                    
+                    particle.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
+                    
+                    heroSection.appendChild(particle);
+                }
+            }
+            
+            createParticles();
+            
+            // Counter animation
+            function animateCounter(elementId, target, duration) {
+                const element = document.getElementById(elementId);
+                const start = 0;
+                const increment = target / (duration / 16); // 16ms is roughly 60fps
+                let current = start;
+                
+                const timer = setInterval(function() {
+                    current += increment;
+                    const progress = Math.min(current / target, 1);
+                    
+                    element.textContent = Math.floor(progress * target);
+                    
+                    if (progress >= 1) {
+                        clearInterval(timer);
+                    }
+                }, 16);
+            }
+            
+            // Intersection Observer for counters
+            const observerOptions = {
+                threshold: 0.5
+            };
+            
+            const counterObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        if (entry.target.id === 'client-counter') {
+                            animateCounter('client-counter', 25, 2000);
+                        } else if (entry.target.id === 'project-counter') {
+                            animateCounter('project-counter', 50, 2000);
+                        } else if (entry.target.id === 'experience-counter') {
+                            animateCounter('experience-counter', 5, 2000);
+                        }
+                        counterObserver.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            const counters = document.querySelectorAll('#client-counter, #project-counter, #experience-counter');
+            counters.forEach(counter => {
+                counterObserver.observe(counter);
+            });
+        });
+    </script>
+
+    <script id="portfolio-filter-script">
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.work-filter-btn');
+            const workItems = document.querySelectorAll('.work-item');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('bg-primary', 'text-white');
+                        btn.classList.add('text-gray-700', 'hover:bg-gray-200');
+                    });
+                    
+                    // Add active class to clicked button
+                    this.classList.remove('text-gray-700', 'hover:bg-gray-200');
+                    this.classList.add('bg-primary', 'text-white');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Filter work items
+                    workItems.forEach(item => {
+                        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+
+    <script id="form-validation-script">
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contact-form');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Simple form validation
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const subject = document.getElementById('subject').value;
+                    const message = document.getElementById('message').value;
+                    
+                    if (!name || !email || !subject || !message) {
+                        alert('Zəhmət olmasa bütün xanaları doldurun.');
+                        return;
+                    }
+                    
+                    // Email validation
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(email)) {
+                        alert('Zəhmət olmasa düzgün email ünvanı yazın.');
+                        return;
+                    }
+                    
+                    // Simulate form submission
+                    const submitButton = contactForm.querySelector('button[type="submit"]');
+                    const originalText = submitButton.innerHTML;
+                    
+                    submitButton.disabled = true;
+                    submitButton.innerHTML = '<span>Göndərilir...</span>';
+                    
+                    setTimeout(function() {
+                        contactForm.reset();
+                        submitButton.innerHTML = '<span>Mesaj Göndərildi!</span>';
+                        
+                        setTimeout(function() {
+                            submitButton.disabled = false;
+                            submitButton.innerHTML = originalText;
+                        }, 2000);
+                    }, 1500);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
